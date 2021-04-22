@@ -16,12 +16,12 @@ use Inertia\Inertia;
 */
 
 Route::middleware('guest')->get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-    ]);
+    return Inertia::render('Welcome');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+// must be at end
+Route::get('/{hash}', ['\App\Http\Controllers\LinksController', 'redirect']);
