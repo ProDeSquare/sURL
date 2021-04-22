@@ -1,3 +1,21 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+}
+
+font-headings {
+  font-family: 'Poppins', sans-serif;
+}

@@ -1,8 +1,8 @@
 <template>
     <app-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Profile
+            <h2 class="font-semibold text-3xl text-gray-800 leading-tight tracking-wide">
+                Edit your profile.
             </h2>
         </template>
 

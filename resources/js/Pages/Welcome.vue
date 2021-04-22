@@ -1,6 +1,43 @@
 <template>
-    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-        <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+    <div class="bg-gray-100 flex content-center justify-center flex-wrap min-h-screen">
+        <div class="max-w-6xl flex-1 mx-auto sm:px-6 lg:px-8">
+            <div class="p-6 bg-white overflow-hidden shadow sm:rounded-lg">
+                <div class="flex">
+                    <div class="bg-purple-600 p-2">
+                        <JetApplicationLogo />
+                    </div>
+
+                    <div class="border-l flex-1 flex p-3 ml-3 content-center flex-wrap">
+                        <h1 class="text-gray-700 text-xl">sURL | URL Shortener</h1>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <p class="leading-wide text-gray-600">
+                        sURL is a service that allows you to shorten your links, save them for future and share them with people. You can easily create unlimited custom links with sURL.
+                    </p>
+
+                    <div class="pt-3 sm:block">
+                        <inertia-link v-if="$page.props.user" href="/dashboard" class="text-sm text-purple-600 underline">
+                            Visit Dashboard
+                        </inertia-link>
+
+                        <template v-else>
+                            <inertia-link :href="route('login')" class="text-purple-600 text-sm">
+                                Log in
+                            </inertia-link>
+
+                            <inertia-link :href="route('register')" class="text-purple-600 ml-4 text-sm">
+                                Register
+                            </inertia-link>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             <inertia-link v-if="$page.props.user" href="/dashboard" class="text-sm text-gray-700 underline">
                 Dashboard
             </inertia-link>
@@ -107,80 +144,15 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </template>
 
-<style scoped>
-    .bg-gray-100 {
-        background-color: #f7fafc;
-        background-color: rgba(247, 250, 252, var(--tw-bg-opacity));
-    }
-
-    .border-gray-200 {
-        border-color: #edf2f7;
-        border-color: rgba(237, 242, 247, var(--tw-border-opacity));
-    }
-
-    .text-gray-400 {
-        color: #cbd5e0;
-        color: rgba(203, 213, 224, var(--tw-text-opacity));
-    }
-
-    .text-gray-500 {
-        color: #a0aec0;
-        color: rgba(160, 174, 192, var(--tw-text-opacity));
-    }
-
-    .text-gray-600 {
-        color: #718096;
-        color: rgba(113, 128, 150, var(--tw-text-opacity));
-    }
-
-    .text-gray-700 {
-        color: #4a5568;
-        color: rgba(74, 85, 104, var(--tw-text-opacity));
-    }
-
-    .text-gray-900 {
-        color: #1a202c;
-        color: rgba(26, 32, 44, var(--tw-text-opacity));
-    }
-
-    @media (prefers-color-scheme: dark) {
-        .dark\:bg-gray-800 {
-            background-color: #2d3748;
-            background-color: rgba(45, 55, 72, var(--tw-bg-opacity));
-        }
-
-        .dark\:bg-gray-900 {
-            background-color: #1a202c;
-            background-color: rgba(26, 32, 44, var(--tw-bg-opacity));
-        }
-
-        .dark\:border-gray-700 {
-            border-color: #4a5568;
-            border-color: rgba(74, 85, 104, var(--tw-border-opacity));
-        }
-
-        .dark\:text-white {
-            color: #fff;
-            color: rgba(255, 255, 255, var(--tw-text-opacity));
-        }
-
-        .dark\:text-gray-400 {
-            color: #cbd5e0;
-            color: rgba(203, 213, 224, var(--tw-text-opacity));
-        }
-    }
-</style>
-
 <script>
+    import JetApplicationLogo from '@/Jetstream/ApplicationLogo'
+
     export default {
-        props: {
-            canLogin: Boolean,
-            canRegister: Boolean,
-            laravelVersion: String,
-            phpVersion: String,
-        }
+        components: {
+            JetApplicationLogo,
+        },
     }
 </script>

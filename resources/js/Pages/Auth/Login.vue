@@ -71,7 +71,7 @@
                 form: this.$inertia.form({
                     email: '',
                     password: '',
-                    remember: false
+                    remember: true
                 })
             }
         },
