@@ -19,9 +19,9 @@ Route::middleware('guest')->get('/', function () {
     return Inertia::render('Welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/dashboard', ['\App\Http\Controllers\HomeController', 'view'])
+    ->name('dashboard');
 
 // must be at end
 Route::get('/{hash}', ['\App\Http\Controllers\LinksController', 'redirect']);

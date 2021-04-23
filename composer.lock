@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9152521bce7b1f12fdec80ac14a17f93",
+    "content-hash": "cee06f30d3d9381add795b836d77e55f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2988,6 +2988,64 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "svnwa/inertiavuepaginator",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/svnwa/InertiaVuePaginator.git",
+                "reference": "b2881c6e0189c8c24f4eb9ea589f9fdec3bb6dce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/svnwa/InertiaVuePaginator/zipball/b2881c6e0189c8c24f4eb9ea589f9fdec3bb6dce",
+                "reference": "b2881c6e0189c8c24f4eb9ea589f9fdec3bb6dce",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~7|~8"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~5|~6",
+                "phpunit/phpunit": "~9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Svnwa\\InertiaVuePaginator\\InertiaVuePaginatorServiceProvider"
+                    ],
+                    "aliases": {
+                        "InertiaVuePaginator": "Svnwa\\InertiaVuePaginator\\Facades\\InertiaVuePaginator"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Svnwa\\InertiaVuePaginator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "license"
+            ],
+            "authors": [
+                {
+                    "name": "author name"
+                }
+            ],
+            "description": ":package_description",
+            "homepage": "https://github.com/svnwa/inertiavuepaginator",
+            "keywords": [
+                "InertiaVuePaginator",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/svnwa/InertiaVuePaginator/issues",
+                "source": "https://github.com/svnwa/InertiaVuePaginator/tree/1.0"
+            },
+            "time": "2021-03-21T22:39:06+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

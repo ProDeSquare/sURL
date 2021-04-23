@@ -16,6 +16,7 @@ class CreateLinksTable extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->string('title');
             $table->text('url');
             $table->string('hash');
             $table->boolean('enabled')->default(true);
