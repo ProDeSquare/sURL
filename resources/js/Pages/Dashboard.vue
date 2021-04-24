@@ -10,8 +10,10 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <Paginator :paginator="links" />
 
-                <div v-for="link in links.data" :key="link.id">
-                    <Link :link="link" />
+                <div class="flex flex-wrap -px-2">
+                    <div class="w-full md:w-4/12 lg:w-3/12 p-2" v-for="link in links.data" :key="link.id">
+                        <Link :link="link" />
+                    </div>
                 </div>
             </div>
         </div>

@@ -11,7 +11,10 @@ class HomeController extends Controller
     public function view ()
     {
         return Inertia::render('Dashboard', [
-            'links' => Auth::user()->links()->paginate()
+            'links' => Auth::user()
+                        ->links()
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(12)
         ]);
     }
 }
