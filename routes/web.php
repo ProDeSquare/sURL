@@ -23,5 +23,13 @@ Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', ['\App\Http\Controllers\HomeController', 'view'])
     ->name('dashboard');
 
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/create-a-link', ['\App\Http\Controllers\LinksController', 'view'])
+    ->name("create-a-link");
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->post('/create-a-link', ['\App\Http\Controllers\LinksController', 'create'])
+    ->name('create-a-link');
+
 // must be at end
-Route::get('/{hash}', ['\App\Http\Controllers\LinksController', 'redirect']);
+Route::get('/l/{hash}', ['\App\Http\Controllers\LinksController', 'redirect']);

@@ -10,8 +10,9 @@ class Link extends Model
     use HasFactory;
 
     protected $fillable = [
+        'title',
         'url',
-        'short_url',
+        'hash',
         'enabled'
     ];
 
