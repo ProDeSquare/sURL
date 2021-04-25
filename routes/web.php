@@ -39,4 +39,8 @@ Route::middleware(['auth:sanctum', 'verified'])
     ->put('/update-link/{link}', ['\App\Http\Controllers\LinksController', 'update'])
     ->name('update-link');
 
+Route::middleware(['auth:sanctum', 'verified'])
+    ->delete('/delete-link/{link}', ['\App\Http\Controllers\LinksController', 'delete'])
+    ->name('delete-link');
+
 Route::get('/l/{hash}', ['\App\Http\Controllers\LinksController', 'redirect']);

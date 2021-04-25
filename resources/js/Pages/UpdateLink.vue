@@ -47,6 +47,32 @@
                     </jet-button>
                 </template>
             </jet-form-section>
+
+            <jet-section-border></jet-section-border>
+        </div>
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 my-6 lg:my-8">
+            <jet-action-section>
+                <template #title>
+                    Delete link
+                </template>
+
+                <template #description>
+                    Delete current link permanently
+                </template>
+
+                <template #content>
+                    <div class="max-w-xl text-sm text-gray-600">
+                        Are you sure you want to delete this link permanently? Once this link is deleted it would no longer point to your desired location.
+                    </div>
+
+                    <div class="mt-5">
+                        <jet-danger-button @click="deleteLink" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                            Delete Link
+                        </jet-danger-button>
+                    </div>
+                </template>
+            </jet-action-section>
         </div>
     </app-layout>
 </template>
@@ -59,7 +85,10 @@
     import JetInput from '@/Jetstream/Input'
     import JetInputError from '@/Jetstream/InputError'
     import JetLabel from '@/Jetstream/Label'
+    import JetSectionBorder from '@/Jetstream/SectionBorder'
     import JetCheckbox from '@/Jetstream/Checkbox'
+    import JetActionSection from '@/Jetstream/ActionSection'
+    import JetDangerButton from '@/Jetstream/DangerButton'
 
     export default {
         components: {
@@ -70,7 +99,10 @@
             JetInputError,
             JetLabel,
             JetActionMessage,
-            JetCheckbox
+            JetCheckbox,
+            JetSectionBorder,
+            JetActionSection,
+            JetDangerButton
         },
         props: {
             link: Object
@@ -94,6 +126,13 @@
                     },
                     onError: () => {
                         // 
+                    }
+                })
+            },
+            deleteLink () {
+                this.$inertia.delete(route('delete-link', {link: this.link.hash}), {
+                    onSuccess: () => {
+                        window.location.href = '/dashboard'
                     }
                 })
             }

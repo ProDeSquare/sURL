@@ -55,7 +55,14 @@ class LinksController extends Controller
         return Inertia::render('UpdateLink', [
             'link' => Link::where('hash', $link->hash)->first()
         ]);
+    }
 
-        // return Link::where('hash', $link->hash)->first();
+    public function delete (Link $link)
+    {
+        if (Auth::id() !== $link->user_id) abort(403);
+
+        $link->delete();
+
+        return Inertia::render('UpdateLink');
     }
 }
