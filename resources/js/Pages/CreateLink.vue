@@ -80,7 +80,7 @@
         },
         methods: {
             createLink () {
-                this.form.post(route('create-a-link'), {
+                this.form.post(route('submit-a-link'), {
                     errorBag: 'createLink',
                     preserveScroll: true,
                     onSuccess: () => this.form.reset(),

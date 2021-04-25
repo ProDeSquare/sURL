@@ -29,7 +29,7 @@ Route::middleware(['auth:sanctum', 'verified'])
 
 Route::middleware(['auth:sanctum', 'verified'])
     ->post('/create-a-link', ['\App\Http\Controllers\LinksController', 'create'])
-    ->name('create-a-link');
+    ->name('submit-a-link');
 
 // must be at end
 Route::get('/l/{hash}', ['\App\Http\Controllers\LinksController', 'redirect']);

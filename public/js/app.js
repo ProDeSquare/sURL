@@ -18035,7 +18035,7 @@ __webpack_require__.r(__webpack_exports__);
     createLink: function createLink() {
       var _this = this;
 
-      this.form.post(route('create-a-link'), {
+      this.form.post(route('submit-a-link'), {
         errorBag: 'createLink',
         preserveScroll: true,
         onSuccess: function onSuccess() {
