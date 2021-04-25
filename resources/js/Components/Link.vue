@@ -2,7 +2,9 @@
     <section class="bg-white shadow-sm mt-4 rounded">
         <div class="p-4 md:p-6">
             <div class="mb-4">
-                <Globe :classes="{ 'w-5 text-gray-500': 1, 'text-purple-600': link.enabled }" />
+                <inertia-link :href="route('edit-link-page', { link: link.hash })">
+                    <Globe :classes="{ 'w-5 text-gray-500': 1, 'text-purple-600': link.enabled }" />
+                </inertia-link>
             </div>
 
             <h3 class="text-gray-800 truncate">{{ link.title }}</h3>

@@ -31,5 +31,12 @@ Route::middleware(['auth:sanctum', 'verified'])
     ->post('/create-a-link', ['\App\Http\Controllers\LinksController', 'create'])
     ->name('submit-a-link');
 
-// must be at end
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/update-link/{link}', ['\App\Http\Controllers\LinksController', 'edit'])
+    ->name('edit-link-page');
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->put('/update-link/{link}', ['\App\Http\Controllers\LinksController', 'update'])
+    ->name('update-link');
+
 Route::get('/l/{hash}', ['\App\Http\Controllers\LinksController', 'redirect']);
