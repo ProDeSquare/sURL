@@ -36,7 +36,7 @@ class LinksController extends Controller
         Auth::user()->links()->create($request->validate([
             'title' => 'required|max:255',
             'url' => 'required|url',
-            'hash' => 'nullable|max:255|unique:links'
+            'hash' => 'nullable|max:255|alpha_dash|unique:links'
         ]));
 
         return Inertia::render('CreateLink');
