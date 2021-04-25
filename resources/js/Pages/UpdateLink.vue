@@ -7,7 +7,7 @@
                 </template>
 
                 <template #description>
-                    Filling out this form would allow you to create short urls for the links provided
+                    Edit "{{ link.title }}" link. Remember that you would not be able to change the hash previously created.
                 </template>
 
                 <template #form>
