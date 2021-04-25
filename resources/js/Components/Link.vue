@@ -33,7 +33,7 @@
         methods: {
             CopyToClipboard () {
                 const el = document.createElement('textarea')
-                el.value = `http://127.0.0.1:8000/l/${this.link.hash}`
+                el.value = `https://surl.prodesquare.com/l/${this.link.hash}`
                 document.body.appendChild(el)
                 el.select()
                 document.execCommand('copy')
