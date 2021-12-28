@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Link;
+use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -64,5 +65,31 @@ class LinksController extends Controller
         $link->delete();
 
         return Inertia::render('UpdateLink');
+    }
+
+    public function create_api (Request $request)
+    {
+        if (! ($user = User::where('api_token', $request->api_token)->first())) {
+            return response()->json(
+                ['msg' => 'Invalid API token!'],
+                401,
+            );
+        }
+
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'url' => 'required|url',
+        ]);
+
+        $user->links()->create([
+            'title' => $request->title,
+            'url' => $request->url,
+            'hash' => bin2hex(random_bytes(15)),
+        ]);
+
+        return response()->json(
+            ['msg' => 'Link created successfully'],
+            201,
+        );
     }
 }
