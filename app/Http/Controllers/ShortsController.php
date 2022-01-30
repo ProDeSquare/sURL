@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class ShortsController extends Controller
 {
-    public function redirect (Short $hash)
+    public function redirect (Short $short)
     {
-        if (! $hash->enabled) abort(404);
+        $short->enabled || abort(404);
 
-        return Redirect::to($hash->url);
+        return Redirect::to($short->url);
     }
 
     public function view ()
