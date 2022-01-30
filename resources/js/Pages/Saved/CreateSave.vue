@@ -1,13 +1,13 @@
 <template>
     <app-layout>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 my-6 lg:my-8">
-            <jet-form-section @submitted="createLink">
+            <jet-form-section @submitted="saveLink">
                 <template #title>
-                    Shorten a link
+                    Save a link
                 </template>
 
                 <template #description>
-                    Filling out this form would allow you to create short urls for the links provided
+                    Filling out this form would allow you to save urls
                 </template>
 
                 <template #form>
@@ -18,25 +18,19 @@
                     </div>
 
                     <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="url" value="Link to shorten" />
+                        <jet-label for="url" value="Link to save" />
                         <jet-input id="url" type="text" class="mt-1 block w-full" v-model="form.url" />
                         <jet-input-error :message="form.errors.url" class="mt-2" />
-                    </div>
-
-                    <div class="col-span-6 sm:col-span-4">
-                        <jet-label for="hash" value="Optional Hash" />
-                        <jet-input id="hash" type="text" class="mt-1 block w-full" v-model="form.hash" />
-                        <jet-input-error :message="form.errors.hash" class="mt-2" />
                     </div>
                 </template>
 
                 <template #actions>
                     <jet-action-message :on="form.recentlySuccessful" class="mr-3">
-                        Created.
+                        Saved.
                     </jet-action-message>
 
                     <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                        Create
+                        Save
                     </jet-button>
                 </template>
             </jet-form-section>
@@ -68,14 +62,13 @@
                 form: this.$inertia.form({
                     title: '',
                     url: '',
-                    hash: ''
                 })
             }
         },
         methods: {
-            createLink () {
-                this.form.post(route('store-short'), {
-                    errorBag: 'createLink',
+            saveLink () {
+                this.form.post(route('store-save'), {
+                    errorBag: 'saveLink',
                     preserveScroll: true,
                     onSuccess: () => this.form.reset(),
                     onError: () => {

@@ -21,8 +21,16 @@
                                     Dashboard
                                 </jet-nav-link>
 
+                                <jet-nav-link :href="route('saved-links-index')" :active="route().current('saved-links-index')">
+                                    Saved links
+                                </jet-nav-link>
+
                                 <jet-nav-link :href="route('create-short')" :active="route().current('create-short')">
                                     Shorten a link
+                                </jet-nav-link>
+
+                                <jet-nav-link :href="route('create-save')" :active="route().current('create-save')">
+                                    Save a link
                                 </jet-nav-link>
                             </div>
                         </div>
@@ -148,8 +156,16 @@
                             Dashboard
                         </jet-responsive-nav-link>
 
+                        <jet-responsive-nav-link :href="route('saved-links-index')" :active="route().current('saved-links-index')">
+                            Saved links
+                        </jet-responsive-nav-link>
+
                         <jet-responsive-nav-link :href="route('create-short')" :active="route().current('create-short')">
                             Shorten a link
+                        </jet-responsive-nav-link>
+
+                        <jet-responsive-nav-link :href="route('create-save')" :active="route().current('create-save')">
+                            Save a link
                         </jet-responsive-nav-link>
                     </div>
 
