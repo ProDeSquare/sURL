@@ -9,7 +9,12 @@
 
             <h3 class="text-gray-800 truncate">{{ save.title }}</h3>
             <div class="truncate">
-                <a class="text-sm text-purple-600 hover:text-purple-800" :href="save.url">{{ save.url }}</a>
+                <a
+                    class="text-sm text-purple-600 hover:text-purple-800"
+                    :href="save.url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >{{ save.url }}</a>
             </div>
             <div class="text-center mt-3">
                 <jet-button class="" @click.native="CopyToClipboard">
