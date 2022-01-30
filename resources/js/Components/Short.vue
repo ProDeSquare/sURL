@@ -17,7 +17,11 @@
                 >{{ short.url }}</a>
             </div>
             <div class="mt-3 text-center">
-                <jet-button class="" @click.native="CopyToClipboard">Copy link to clipboard</jet-button>
+                <jet-button class="" @click.native="CopyToClipboard">
+                    <Clipboard class="w-4 mr-2" />
+
+                    <span>Copy to clipboard</span>
+                </jet-button>
             </div>
         </div>
     </section>
@@ -26,14 +30,16 @@
 <script>
     import JetButton from '@/Jetstream/Button'
     import Globe from '@/Components/Icons/Globe'
+    import Clipboard from '@/Components/Icons/Clipboard'
 
     export default {
         props: {
             short: Object
         },
         components: {
+            Clipboard,
             JetButton,
-            Globe
+            Globe,
         },
         methods: {
             CopyToClipboard () {

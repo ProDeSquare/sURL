@@ -19419,6 +19419,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
 /* harmony import */ var _Components_Icons_Globe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Components/Icons/Globe */ "./resources/js/Components/Icons/Globe.vue");
+/* harmony import */ var _Components_Icons_Clipboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/Icons/Clipboard */ "./resources/js/Components/Icons/Clipboard.vue");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -19426,6 +19428,7 @@ __webpack_require__.r(__webpack_exports__);
     "short": Object
   },
   components: {
+    Clipboard: _Components_Icons_Clipboard__WEBPACK_IMPORTED_MODULE_2__["default"],
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__["default"],
     Globe: _Components_Icons_Globe__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
@@ -22292,12 +22295,16 @@ var _hoisted_7 = {
   "class": "mt-3 text-center"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Copy link to clipboard");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Copy to clipboard", -1
+/* HOISTED */
+);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Globe = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Globe");
 
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
+
+  var _component_Clipboard = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Clipboard");
 
   var _component_jet_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-button");
 
@@ -22336,7 +22343,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: $options.CopyToClipboard
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_8];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Clipboard, {
+        "class": "w-4 mr-2"
+      }), _hoisted_8];
     }),
     _: 1
     /* STABLE */
