@@ -21,7 +21,7 @@
                                     Dashboard
                                 </jet-nav-link>
 
-                                <jet-nav-link :href="route('create-a-link')" :active="route().current('create-a-link')">
+                                <jet-nav-link :href="route('create-short')" :active="route().current('create-short')">
                                     Shorten a link
                                 </jet-nav-link>
                             </div>
@@ -148,8 +148,8 @@
                             Dashboard
                         </jet-responsive-nav-link>
 
-                        <jet-responsive-nav-link :href="route('create-a-link')" :active="route().current('create-a-link')">
-                            Create a link
+                        <jet-responsive-nav-link :href="route('create-short')" :active="route().current('create-short')">
+                            Shorten a link
                         </jet-responsive-nav-link>
                     </div>
 

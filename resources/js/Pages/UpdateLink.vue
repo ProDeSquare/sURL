@@ -118,7 +118,7 @@
         },
         methods: {
             updateLink () {
-                this.form.put(route('update-link', { short: this.short.hash }), {
+                this.form.put(route('update-short', { short: this.short.hash }), {
                     errorBag: 'createLink',
                     preserveScroll: true,
                     onSuccess: () => {
@@ -130,7 +130,7 @@
                 })
             },
             deleteLink () {
-                this.$inertia.delete(route('delete-link', {short: this.short.hash}), {
+                this.$inertia.delete(route('delete-short', {short: this.short.hash}), {
                     onSuccess: () => {
                         window.location.href = '/dashboard'
                     }

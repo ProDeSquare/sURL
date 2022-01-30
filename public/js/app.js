@@ -20662,7 +20662,7 @@ __webpack_require__.r(__webpack_exports__);
     createLink: function createLink() {
       var _this = this;
 
-      this.form.post(route('submit-a-link'), {
+      this.form.post(route('create-short'), {
         errorBag: 'createLink',
         preserveScroll: true,
         onSuccess: function onSuccess() {
@@ -21593,7 +21593,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     updateLink: function updateLink() {
-      this.form.put(route('update-link', {
+      this.form.put(route('update-short', {
         "short": this["short"].hash
       }), {
         errorBag: 'createLink',
@@ -21605,7 +21605,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     deleteLink: function deleteLink() {
-      this.$inertia["delete"](route('delete-link', {
+      this.$inertia["delete"](route('delete-short', {
         "short": this["short"].hash
       }), {
         onSuccess: function onSuccess() {
@@ -21954,7 +21954,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-button");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: _ctx.route('edit-link-page', {
+    href: _ctx.route('update-short', {
       "short": $props["short"].hash
     }),
     title: "Edit Link"
@@ -23360,7 +23360,7 @@ var _hoisted_39 = {
 
 var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard ");
 
-var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Create a link ");
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Shorten a link ");
 
 var _hoisted_42 = {
   "class": "pt-4 pb-1 border-t border-gray-200"
@@ -23486,8 +23486,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_nav_link, {
-    href: _ctx.route('create-a-link'),
-    active: _ctx.route().current('create-a-link')
+    href: _ctx.route('create-short'),
+    active: _ctx.route().current('create-short')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_9];
@@ -23668,8 +23668,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
-    href: _ctx.route('create-a-link'),
-    active: _ctx.route().current('create-a-link')
+    href: _ctx.route('create-short'),
+    active: _ctx.route().current('create-short')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_41];

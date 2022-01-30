@@ -2,7 +2,7 @@
     <section class="bg-white shadow-sm mt-4 rounded">
         <div class="p-4 md:p-6">
             <div class="mb-4">
-                <inertia-link :href="route('edit-link-page', { short: short.hash })" title="Edit Link">
+                <inertia-link :href="route('update-short', { short: short.hash })" title="Edit Link">
                     <Globe :classes="{ 'w-5 text-gray-500': 1, 'text-purple-600': short.enabled }" />
                 </inertia-link>
             </div>
