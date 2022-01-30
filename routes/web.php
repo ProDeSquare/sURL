@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShortsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,28 +21,26 @@ Route::middleware('guest')->get('/', function () {
     return Inertia::render('Welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/dashboard', ['\App\Http\Controllers\HomeController', 'view'])
-    ->name('dashboard');
+Route::group(['middleware' => ['auth:sanctum, verified']], function () {
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/create-a-link', ['\App\Http\Controllers\LinksController', 'view'])
-    ->name("create-a-link");
+    Route::get('/dashboard', [HomeController::class, 'view'])
+        ->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->post('/create-a-link', ['\App\Http\Controllers\LinksController', 'create'])
-    ->name('submit-a-link');
+    Route::get('/create-a-link', [ShortsController::class, 'view'])
+        ->name("create-a-link");
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/update-link/{link}', ['\App\Http\Controllers\LinksController', 'edit'])
-    ->name('edit-link-page');
+    Route::post('/create-a-link', [ShortsController::class, 'create'])
+        ->name('submit-a-link');
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->put('/update-link/{link}', ['\App\Http\Controllers\LinksController', 'update'])
-    ->name('update-link');
+    Route::get('/update-link/{short}', [ShortsController::class, 'edit'])
+        ->name('edit-link-page');
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->delete('/delete-link/{link}', ['\App\Http\Controllers\LinksController', 'delete'])
-    ->name('delete-link');
+    Route::put('/update-link/{short}', [ShortsController::class, 'update'])
+        ->name('update-link');
 
-Route::get('/l/{hash}', ['\App\Http\Controllers\LinksController', 'redirect']);
+    Route::delete('/delete-link/{short}', [ShortsController::class, 'delete'])
+        ->name('delete-link');
+
+});
+
+Route::get('/l/{hash}', [ShortsController::class, 'redirect']);

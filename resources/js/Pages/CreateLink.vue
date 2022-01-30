@@ -1,15 +1,9 @@
 <template>
     <app-layout>
-        <!-- <template #header>
-            <h2 class="font-semibold text-3xl text-gray-800 leading-tight tracking-wide">
-                Create a Link
-            </h2>
-        </template> -->
-
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 my-6 lg:my-8">
             <jet-form-section @submitted="createLink">
                 <template #title>
-                    Create a link
+                    Shorten a link
                 </template>
 
                 <template #description>

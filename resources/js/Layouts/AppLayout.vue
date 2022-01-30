@@ -22,7 +22,7 @@
                                 </jet-nav-link>
 
                                 <jet-nav-link :href="route('create-a-link')" :active="route().current('create-a-link')">
-                                    Create a link
+                                    Shorten a link
                                 </jet-nav-link>
                             </div>
                         </div>

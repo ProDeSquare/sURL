@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Models\Link;
+use App\Models\Short;
 use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
-class LinksController extends Controller
+class ShortsController extends Controller
 {
-    public function redirect (Link $hash)
+    public function redirect (Short $hash)
     {
         if (! $hash->enabled) abort(404);
 
@@ -23,46 +23,44 @@ class LinksController extends Controller
         return Inertia::render('CreateLink');
     }
 
-    public function edit (Link $link)
+    public function edit (Short $short)
     {
         return Inertia::render('UpdateLink', [
-            'link' => $link
+            'short' => $short
         ]);
     }
 
     public function create (Request $request)
     {
-        if (! $request->hash) $request['hash'] = bin2hex(random_bytes(5));
+        $request->filled('hash') || $request['hash'] = bin2hex(random_bytes(5));
 
-        Auth::user()->links()->create($request->validate([
+        Auth::user()->shorts()->create($request->validate([
             'title' => 'required|max:255',
             'url' => 'required|url',
-            'hash' => 'nullable|max:255|alpha_dash|unique:links'
+            'hash' => 'nullable|max:255|alpha_dash|unique:shorts'
         ]));
 
         return Inertia::render('CreateLink');
     }
 
-    public function update (Request $request, Link $link)
+    public function update (Request $request, Short $short)
     {
-        if (Auth::id() !== $link->user_id) abort(403);
+        if (Auth::id() !== $short->user_id) abort(403);
 
-        $link->update($request->validate([
+        $short->update($request->validate([
             'title' => 'required|max:255',
             'url' => 'required|url',
             'enabled' => 'nullable|boolean'
         ]));
 
         return Inertia::render('UpdateLink', [
-            'link' => Link::where('hash', $link->hash)->first()
+            'short' => Short::where('hash', $short->hash)->first()
         ]);
     }
 
-    public function delete (Link $link)
+    public function delete (Short $short)
     {
-        if (Auth::id() !== $link->user_id) abort(403);
-
-        $link->delete();
+        Auth::id() === $short->user_id && $short->delete();
 
         return Inertia::render('UpdateLink');
     }
@@ -76,15 +74,13 @@ class LinksController extends Controller
             );
         }
 
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'url' => 'required|url',
-        ]);
-
-        $user->links()->create([
+        $user->shorts()->create([
             'title' => $request->title,
-            'url' => $request->url,
-            'hash' => bin2hex(random_bytes(15)),
+            
+            ...$request->validate([
+                'title' => 'required|max:255',
+                'url' => 'required|url',
+            ]),
         ]);
 
         return response()->json(

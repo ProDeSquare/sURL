@@ -7,7 +7,7 @@
                 </template>
 
                 <template #description>
-                    Edit "{{ link.title }}" link. Remember that you would not be able to change the hash previously created.
+                    Edit "{{ short.title }}" link. Remember that you would not be able to change the hash previously created.
                 </template>
 
                 <template #form>
@@ -25,7 +25,7 @@
 
                     <div class="col-span-6 sm:col-span-4">
                         <jet-label for="hash" value="Hash" />
-                        <jet-input id="hash" type="text" class="mt-1 block w-full bg-gray-100 text-gray-500" :value="link.hash" disabled />
+                        <jet-input id="hash" type="text" class="mt-1 block w-full bg-gray-100 text-gray-500" :value="short.hash" disabled />
                         <jet-input-error :message="form.errors.hash" class="mt-2" />
                     </div>
 
@@ -105,20 +105,20 @@
             JetDangerButton
         },
         props: {
-            link: Object
+            short: Object
         },
         data () {
             return {
                 form: this.$inertia.form({
-                    title: this.link.title,
-                    url: this.link.url,
-                    enabled: Boolean(this.link.enabled)
+                    title: this.short.title,
+                    url: this.short.url,
+                    enabled: Boolean(this.short.enabled)
                 })
             }
         },
         methods: {
             updateLink () {
-                this.form.put(route('update-link', { link: this.link.hash }), {
+                this.form.put(route('update-link', { short: this.short.hash }), {
                     errorBag: 'createLink',
                     preserveScroll: true,
                     onSuccess: () => {
@@ -130,7 +130,7 @@
                 })
             },
             deleteLink () {
-                this.$inertia.delete(route('delete-link', {link: this.link.hash}), {
+                this.$inertia.delete(route('delete-link', {short: this.short.hash}), {
                     onSuccess: () => {
                         window.location.href = '/dashboard'
                     }
