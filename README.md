@@ -12,6 +12,8 @@ Follow these steps then
 ```
 composer install # install composer dependencies
 php artisan key:generate # generate application key
+php artisan migrate # migrate database tables
+php artisan storage:link # link storage to public directory
 npm install # install npm dependencies
 npm run dev # compile js and css resources
 ```
