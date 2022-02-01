@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Short;
-use App\Models\User;
 use Inertia\Inertia;
+use App\Models\Short;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -63,29 +62,5 @@ class ShortsController extends Controller
         Auth::id() === $short->user_id && $short->delete();
 
         return Inertia::render('UpdateShort');
-    }
-
-    public function create_api (Request $request)
-    {
-        if (! ($user = User::where('api_token', $request->api_token)->first())) {
-            return response()->json(
-                ['msg' => 'Invalid API token!'],
-                401,
-            );
-        }
-
-        $user->shorts()->create([
-            'title' => $request->title,
-            
-            ...$request->validate([
-                'title' => 'required|max:255',
-                'url' => 'required|url',
-            ]),
-        ]);
-
-        return response()->json(
-            ['msg' => 'Link created successfully'],
-            201,
-        );
     }
 }
