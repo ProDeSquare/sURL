@@ -19,12 +19,12 @@ class ShortsController extends Controller
 
     public function view ()
     {
-        return Inertia::render('CreateShort');
+        return Inertia::render('Short/CreateShort');
     }
 
     public function edit (Short $short)
     {
-        return Inertia::render('UpdateShort', [
+        return Inertia::render('Short/UpdateShort', [
             'short' => $short
         ]);
     }
@@ -39,7 +39,7 @@ class ShortsController extends Controller
             'hash' => 'nullable|max:255|alpha_dash|unique:shorts'
         ]));
 
-        return Inertia::render('CreateShort');
+        return Inertia::render('Short/CreateShort');
     }
 
     public function update (Request $request, Short $short)
@@ -52,7 +52,7 @@ class ShortsController extends Controller
             'enabled' => 'nullable|boolean'
         ]));
 
-        return Inertia::render('UpdateShort', [
+        return Inertia::render('Short/UpdateShort', [
             'short' => Short::where('hash', $short->hash)->first()
         ]);
     }
@@ -61,6 +61,6 @@ class ShortsController extends Controller
     {
         Auth::id() === $short->user_id && $short->delete();
 
-        return Inertia::render('UpdateShort');
+        return Inertia::render('Short/UpdateShort');
     }
 }
