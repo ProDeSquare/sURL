@@ -61,7 +61,7 @@
             deleteLink () {
                 this.$inertia.delete(route('delete-save', {save: this.save.id}), {
                     onSuccess: () => {
-                        window.location.href = '/saved/link'
+                        window.location.href = route('saved-links-index')
                     }
                 })
             }

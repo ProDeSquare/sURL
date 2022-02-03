@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth:sanctum, verified']], function () {
 
     });
 
-    Route::group(['prefix' => 'saved/link'], function () {
+    Route::group(['prefix' => 'saved/links'], function () {
 
         Route::get('/', [SavedLinksController::class, 'index'])->name('saved-links-index');
         Route::get('/create', [SavedLinksController::class, 'view'])->name('create-save');
