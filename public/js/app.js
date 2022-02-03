@@ -19169,7 +19169,7 @@ __webpack_require__.r(__webpack_exports__);
         "short": this["short"].hash
       }), {
         onSuccess: function onSuccess() {
-          window.location.href = '/dashboard';
+          window.location.href = route('dashboard');
         }
       });
     }
