@@ -16,6 +16,7 @@ class CreateShortsTable extends Migration
         Schema::create('shorts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('collection_id')->nullable();
             $table->string('title');
             $table->text('url');
             $table->string('hash');
