@@ -13,7 +13,7 @@ Route::middleware('guest')->get('/', function () {
 
 Route::group(['middleware' => ['auth:sanctum, verified']], function () {
 
-    Route::get('/dashboard', [HomeController::class, 'view'])->name('dashboard');
+    Route::get('/dashboard/{collection?}', [HomeController::class, 'view'])->name('dashboard');
 
     Route::group(['prefix' => 'short/link'], function () {
 

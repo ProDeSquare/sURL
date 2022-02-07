@@ -7,13 +7,18 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function view ()
+    public function view ($collection = null)
     {
+        $shorts = $collection
+            ? Auth::user()->collections()->findOrFail($collection)->shorts()->latest()->paginate(12)
+            : Auth::user()->shorts()->latest()->paginate(12);
+
         return Inertia::render('Dashboard', [
-            'shorts' => Auth::user()
-                        ->shorts()
-                        ->orderBy('created_at', 'desc')
-                        ->paginate(12)
+            'shorts' => $shorts,
+
+            'collections' => Auth::user()
+                            ->collections()
+                            ->get(),
         ]);
     }
 }

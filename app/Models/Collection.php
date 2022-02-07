@@ -12,4 +12,14 @@ class Collection extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function shorts ()
+    {
+        return $this->hasMany(Short::class, 'collection_id');
+    }
+
+    public function saves ()
+    {
+        return $this->hasMany(Save::class, 'collection_id');
+    }
 }
