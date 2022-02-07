@@ -33,7 +33,7 @@
                                 <jet-dropdown-link
                                     v-for="collection in collections"
                                     :key="collection.id"
-                                    :href="route('dashboard', { collection: collection.id })"
+                                    :href="route('dashboard', { collection: collection.id, name: collection.name })"
                                 >
                                     {{ collection.name }}
                                 </jet-dropdown-link>

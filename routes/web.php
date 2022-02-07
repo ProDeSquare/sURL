@@ -13,7 +13,7 @@ Route::middleware('guest')->get('/', function () {
 
 Route::group(['middleware' => ['auth:sanctum, verified']], function () {
 
-    Route::get('/dashboard/{collection?}', [HomeController::class, 'view'])->name('dashboard');
+    Route::get('/dashboard/{collection?}/{name?}', [HomeController::class, 'view'])->name('dashboard');
 
     Route::group(['prefix' => 'short/link'], function () {
 
@@ -27,7 +27,7 @@ Route::group(['middleware' => ['auth:sanctum, verified']], function () {
 
     Route::group(['prefix' => 'saved/links'], function () {
 
-        Route::get('/', [SavedLinksController::class, 'index'])->name('saved-links-index');
+        Route::get('/{collection?}/{name?}', [SavedLinksController::class, 'index'])->name('saved-links-index');
         Route::get('/create', [SavedLinksController::class, 'view'])->name('create-save');
         Route::post('/create', [SavedLinksController::class, 'save'])->name('store-save');
         Route::delete('/delete/{save}', [SavedLinksController::class, 'delete'])->name('delete-save');

@@ -23202,7 +23202,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_dropdown_link, {
               key: collection.id,
               href: _ctx.route('dashboard', {
-                collection: collection.id
+                collection: collection.id,
+                name: collection.name
               })
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
