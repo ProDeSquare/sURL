@@ -16808,7 +16808,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     CopyToClipboard: function CopyToClipboard() {
       var el = document.createElement('textarea');
-      el.value = "https://surl.prodesquare.com/l/".concat(this["short"].hash);
+      el.value = route('short-redirect', this["short"].hash);
       document.body.appendChild(el);
       el.select();
       document.execCommand('copy');

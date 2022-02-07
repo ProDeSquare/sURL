@@ -42,4 +42,4 @@ Route::group(['middleware' => ['auth:sanctum, verified']], function () {
 
 });
 
-Route::get('/l/{short}', [ShortsController::class, 'redirect']);
+Route::get('/l/{short}', [ShortsController::class, 'redirect'])->name('short-redirect');

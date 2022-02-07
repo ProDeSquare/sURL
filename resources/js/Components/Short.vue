@@ -44,7 +44,7 @@
         methods: {
             CopyToClipboard () {
                 const el = document.createElement('textarea')
-                el.value = `https://surl.prodesquare.com/l/${this.short.hash}`
+                el.value = route('short-redirect', this.short.hash)
                 document.body.appendChild(el)
                 el.select()
                 document.execCommand('copy')
