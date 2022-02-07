@@ -10,7 +10,9 @@ class CollectionsController extends Controller
 {
     public function view ()
     {
-        return Inertia::render('Collections/Index');
+        return Inertia::render('Collections/Index', [
+            'collections' => Auth::user()->collections()->latest()->get(),
+        ]);
     }
 
     public function create (Request $request)

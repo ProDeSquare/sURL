@@ -28,6 +28,31 @@
                     </jet-button>
                 </template>
             </jet-form-section>
+
+            <template v-if="collections.length">
+                <jet-section-border></jet-section-border>
+
+                <jet-action-section>
+                    <template #title>
+                        Your collections
+                    </template>
+
+                    <template #description>
+                        You've created total of {{ collections.length }} collections.
+                    </template>
+
+                    <template #content>
+                        <ul>
+                            <li
+                                v-for="collection in collections"
+                                :key="collection.id"
+                            >
+                                {{ collection.name }}
+                            </li>
+                        </ul>
+                    </template>
+                </jet-action-section>
+            </template>
         </div>
     </app-layout>
 </template>
@@ -40,6 +65,8 @@
     import JetInput from '@/Jetstream/Input'
     import JetInputError from '@/Jetstream/InputError'
     import JetLabel from '@/Jetstream/Label'
+    import JetSectionBorder from '@/Jetstream/SectionBorder'
+    import JetActionSection from '@/Jetstream/ActionSection'
 
     export default {
         components: {
@@ -49,7 +76,12 @@
             JetInput,
             JetInputError,
             JetLabel,
-            JetActionMessage
+            JetActionMessage,
+            JetSectionBorder,
+            JetActionSection,
+        },
+        props: {
+            collections: Object,
         },
         data () {
             return {
