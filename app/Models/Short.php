@@ -13,7 +13,8 @@ class Short extends Model
         'title',
         'url',
         'hash',
-        'enabled'
+        'enabled',
+        'collection_id',
     ];
 
     public function getRouteKeyName()

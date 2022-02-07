@@ -28,6 +28,26 @@
                         <jet-input id="hash" type="text" class="mt-1 block w-full" v-model="form.hash" />
                         <jet-input-error :message="form.errors.hash" class="mt-2" />
                     </div>
+
+                    <div class="col-span-6 sm:col-span-4">
+                        <jet-label for="url" value="Save to collection" />
+
+                        <select
+                            name="collection"
+                            class="mt-1 block border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md w-full"
+                            v-model="form.collection"
+                        >
+                            <option value="">Select Collection</option>
+
+                            <option
+                                v-for="collection in collections"
+                                :key="collection.id"
+                                :value="collection.id"
+                            >
+                                {{ collection.name }}
+                            </option>
+                        </select>
+                    </div>
                 </template>
 
                 <template #actions>
@@ -63,12 +83,16 @@
             JetLabel,
             JetActionMessage
         },
+        props: {
+            collections: Object,
+        },
         data () {
             return {
                 form: this.$inertia.form({
                     title: '',
                     url: '',
-                    hash: ''
+                    hash: '',
+                    collection: '',
                 })
             }
         },

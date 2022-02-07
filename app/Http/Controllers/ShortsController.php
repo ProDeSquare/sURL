@@ -19,7 +19,9 @@ class ShortsController extends Controller
 
     public function view ()
     {
-        return Inertia::render('Short/CreateShort');
+        return Inertia::render('Short/CreateShort', [
+            'collections' => Auth::user()->collections()->latest()->get(),
+        ]);
     }
 
     public function edit (Short $short)
@@ -33,13 +35,22 @@ class ShortsController extends Controller
     {
         $request->filled('hash') || $request['hash'] = bin2hex(random_bytes(5));
 
-        Auth::user()->shorts()->create($request->validate([
-            'title' => 'required|max:255',
-            'url' => 'required|url',
-            'hash' => 'nullable|max:255|alpha_dash|unique:shorts'
-        ]));
+        $request->filled('collection') &&
+        $collection = Auth::user()->collections()->findOrFail($request->collection);
 
-        return Inertia::render('Short/CreateShort');
+        Auth::user()->shorts()->create([
+            'collection_id' => $collection->id ?? null,
+
+            ...$request->validate([
+                'title' => 'required|max:255',
+                'url' => 'required|url',
+                'hash' => 'nullable|max:255|alpha_dash|unique:shorts'
+            ])
+        ]);
+
+        return Inertia::render('Short/CreateShort', [
+            'collections' => Auth::user()->collections()->latest()->get(),
+        ]);
     }
 
     public function update (Request $request, Short $short)
