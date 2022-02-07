@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShortsController;
 use App\Http\Controllers\SavedLinksController;
+use App\Http\Controllers\CollectionsController;
 
 Route::middleware('guest')->get('/', function () {
     return Inertia::render('Welcome');
@@ -31,6 +32,11 @@ Route::group(['middleware' => ['auth:sanctum, verified']], function () {
         Route::post('/create', [SavedLinksController::class, 'save'])->name('store-save');
         Route::delete('/delete/{save}', [SavedLinksController::class, 'delete'])->name('delete-save');
 
+    });
+
+    Route::group(['prefix' => 'collections'], function () {
+        Route::get('/', [CollectionsController::class, 'view'])->name('create-collection-page');
+        Route::post('/', [CollectionsController::class, 'create'])->name('collection-save');
     });
 
 });

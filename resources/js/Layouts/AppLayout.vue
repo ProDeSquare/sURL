@@ -32,6 +32,10 @@
                                 <jet-nav-link :href="route('create-save')" :active="route().current('create-save')">
                                     Save a link
                                 </jet-nav-link>
+
+                                <jet-nav-link :href="route('create-collection-page')" :active="route().current('create-collection-page')">
+                                    Collections
+                                </jet-nav-link>
                             </div>
                         </div>
 
@@ -166,6 +170,10 @@
 
                         <jet-responsive-nav-link :href="route('create-save')" :active="route().current('create-save')">
                             Save a link
+                        </jet-responsive-nav-link>
+
+                        <jet-responsive-nav-link :href="route('create-collection-page')" :active="route().current('create-collection-page')">
+                            Collections
                         </jet-responsive-nav-link>
                     </div>
 
