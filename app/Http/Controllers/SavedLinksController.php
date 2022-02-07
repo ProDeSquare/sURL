@@ -9,10 +9,19 @@ use Illuminate\Support\Facades\Auth;
 
 class SavedLinksController extends Controller
 {
-    public function index ()
+    public function index ($collection = null)
     {
+        $saves = $collection
+            ? Auth::user()->collections()->findOrFail($collection)->saves()->latest()->paginate(1)
+            : Auth::user()->saves()->latest()->paginate(12);
+
         return Inertia::render('Saved/Index', [
-            'saves' => Auth::user()->saves()->orderBy('created_at', 'desc')->paginate(12),
+            'saves' => $saves,
+
+            'collections' => Auth::user()
+                            ->collections()
+                            ->latest()
+                            ->get(),
         ]);
     }
 

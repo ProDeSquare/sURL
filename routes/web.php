@@ -27,10 +27,11 @@ Route::group(['middleware' => ['auth:sanctum, verified']], function () {
 
     Route::group(['prefix' => 'saved/links'], function () {
 
-        Route::get('/{collection?}/{name?}', [SavedLinksController::class, 'index'])->name('saved-links-index');
         Route::get('/create', [SavedLinksController::class, 'view'])->name('create-save');
         Route::post('/create', [SavedLinksController::class, 'save'])->name('store-save');
         Route::delete('/delete/{save}', [SavedLinksController::class, 'delete'])->name('delete-save');
+
+        Route::get('/{collection?}/{name?}', [SavedLinksController::class, 'index'])->name('saved-links-index');
 
     });
 

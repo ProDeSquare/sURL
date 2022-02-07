@@ -18726,17 +18726,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Components_Paginator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Components/Paginator */ "./resources/js/Components/Paginator.vue");
 /* harmony import */ var _Components_Saved__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/Saved */ "./resources/js/Components/Saved.vue");
+/* harmony import */ var _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Dropdown */ "./resources/js/Jetstream/Dropdown.vue");
+/* harmony import */ var _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/DropdownLink */ "./resources/js/Jetstream/DropdownLink.vue");
+
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    saves: Object
+    saves: Object,
+    collections: Object
   },
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
     Paginator: _Components_Paginator__WEBPACK_IMPORTED_MODULE_1__.default,
-    Saved: _Components_Saved__WEBPACK_IMPORTED_MODULE_2__.default
+    Saved: _Components_Saved__WEBPACK_IMPORTED_MODULE_2__.default,
+    JetDropdown: _Jetstream_Dropdown__WEBPACK_IMPORTED_MODULE_3__.default,
+    JetDropdownLink: _Jetstream_DropdownLink__WEBPACK_IMPORTED_MODULE_4__.default
   }
 });
 
@@ -24527,10 +24534,38 @@ var _hoisted_3 = {
   "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
 };
 var _hoisted_4 = {
+  "class": "grid justify-items-end mt-4 mb-2"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "inline-flex rounded-md"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  type: "button",
+  "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Collection "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+  "class": "ml-2 -mr-0.5 h-4 w-4",
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 20 20",
+  fill: "currentColor"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "fill-rule": "evenodd",
+  d: "M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z",
+  "clip-rule": "evenodd"
+})])])], -1
+/* HOISTED */
+);
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" All ");
+
+var _hoisted_7 = {
   "class": "flex flex-wrap -mx-2"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Paginator = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Paginator");
+
+  var _component_jet_dropdown_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-dropdown-link");
+
+  var _component_jet_dropdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-dropdown");
 
   var _component_Saved = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Saved");
 
@@ -24545,7 +24580,52 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         paginator: $props.saves
       }, null, 8
       /* PROPS */
-      , ["paginator"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.saves.data, function (save) {
+      , ["paginator"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dropdown, {
+        align: "right",
+        width: "60"
+      }, {
+        trigger: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_5];
+        }),
+        content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dropdown_link, {
+            href: _ctx.route('saved-links-index')
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_6];
+            }),
+            _: 1
+            /* STABLE */
+
+          }, 8
+          /* PROPS */
+          , ["href"]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.collections, function (collection) {
+            return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_dropdown_link, {
+              key: collection.id,
+              href: _ctx.route('saved-links-index', {
+                collection: collection.id,
+                name: collection.name
+              })
+            }, {
+              "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(collection.name), 1
+                /* TEXT */
+                )];
+              }),
+              _: 2
+              /* DYNAMIC */
+
+            }, 1032
+            /* PROPS, DYNAMIC_SLOTS */
+            , ["href"]);
+          }), 128
+          /* KEYED_FRAGMENT */
+          ))];
+        }),
+        _: 1
+        /* STABLE */
+
+      })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.saves.data, function (save) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
           "class": "w-full md:w-4/12 lg:w-3/12 px-2",
           key: save.id
