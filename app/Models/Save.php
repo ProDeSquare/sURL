@@ -12,5 +12,6 @@ class Save extends Model
     protected $fillable = [
         'title',
         'url',
+        'collection_id',
     ];
 }

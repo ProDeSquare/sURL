@@ -18,17 +18,28 @@ class SavedLinksController extends Controller
 
     public function view ()
     {
-        return Inertia::render('Saved/CreateSave');
+        return Inertia::render('Saved/CreateSave', [
+            'collections' => Auth::user()->collections()->latest()->get()
+        ]);
     }
 
     public function save (Request $request)
     {
-        Auth::user()->saves()->create($request->validate([
-            'title' => 'required|string',
-            'url' => 'required|url',
-        ]));
+        $request->filled('collection') && 
+        $collection = Auth::user()->collections()->findOrFail($request->collection);
 
-        return Inertia::render('Saved/CreateSave');
+        Auth::user()->saves()->create([
+            'collection_id' => $collection->id ?? null,
+
+            ...$request->validate([
+                'title' => 'required|string',
+                'url' => 'required|url',
+            ])
+        ]);
+
+        return Inertia::render('Saved/CreateSave', [
+            'collections' => Auth::user()->collections()->latest()->get()
+        ]);
     }
 
     public function delete (Save $save)
