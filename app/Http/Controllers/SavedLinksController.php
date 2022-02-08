@@ -12,7 +12,7 @@ class SavedLinksController extends Controller
     public function index ($collection = null)
     {
         $saves = $collection
-            ? Auth::user()->collections()->findOrFail($collection)->saves()->latest()->paginate(1)
+            ? Auth::user()->collections()->findOrFail($collection)->saves()->latest()->paginate(12)
             : Auth::user()->saves()->latest()->paginate(12);
 
         return Inertia::render('Saved/Index', [
