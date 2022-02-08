@@ -11,7 +11,7 @@ class CollectionsController extends Controller
     public function view ()
     {
         return Inertia::render('Collections/Index', [
-            'collections' => Auth::user()->collections()->latest()->get(),
+            'collections' => Auth::user()->collections()->orderBy('name')->get(),
         ]);
     }
 
@@ -21,6 +21,8 @@ class CollectionsController extends Controller
             'name' => 'required|string',
         ]));
 
-        return Inertia::render('Collections/Index');
+        return Inertia::render('Collections/Index', [
+            'collections' => Auth::user()->collections()->orderBy('name')->get(),
+        ]);
     }
 }

@@ -20,7 +20,7 @@ class SavedLinksController extends Controller
 
             'collections' => Auth::user()
                             ->collections()
-                            ->latest()
+                            ->orderBy('name')
                             ->get(),
         ]);
     }
@@ -28,7 +28,7 @@ class SavedLinksController extends Controller
     public function view ()
     {
         return Inertia::render('Saved/CreateSave', [
-            'collections' => Auth::user()->collections()->latest()->get()
+            'collections' => Auth::user()->collections()->orderBy('name')->get()
         ]);
     }
 
@@ -47,7 +47,7 @@ class SavedLinksController extends Controller
         ]);
 
         return Inertia::render('Saved/CreateSave', [
-            'collections' => Auth::user()->collections()->latest()->get()
+            'collections' => Auth::user()->collections()->orderBy('name')->get()
         ]);
     }
 

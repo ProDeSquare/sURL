@@ -20,7 +20,7 @@ class ShortsController extends Controller
     public function view ()
     {
         return Inertia::render('Short/CreateShort', [
-            'collections' => Auth::user()->collections()->latest()->get(),
+            'collections' => Auth::user()->collections()->orderBy('name')->get(),
         ]);
     }
 
@@ -49,7 +49,7 @@ class ShortsController extends Controller
         ]);
 
         return Inertia::render('Short/CreateShort', [
-            'collections' => Auth::user()->collections()->latest()->get(),
+            'collections' => Auth::user()->collections()->orderBy('name')->get(),
         ]);
     }
 

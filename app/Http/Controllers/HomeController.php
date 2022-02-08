@@ -18,6 +18,7 @@ class HomeController extends Controller
 
             'collections' => Auth::user()
                             ->collections()
+                            ->orderBy('name')
                             ->get(),
         ]);
     }
