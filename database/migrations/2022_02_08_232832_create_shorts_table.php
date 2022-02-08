@@ -15,8 +15,8 @@ class CreateShortsTable extends Migration
     {
         Schema::create('shorts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('collection_id')->nullable();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('collection_id')->nullable()->constrained()->onDelete('cascade');;
             $table->string('title');
             $table->text('url');
             $table->string('hash');
@@ -32,6 +32,6 @@ class CreateShortsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('links');
+        Schema::dropIfExists('shorts');
     }
 }

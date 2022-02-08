@@ -15,8 +15,8 @@ class CreateSavesTable extends Migration
     {
         Schema::create('saves', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('collection_id')->nullable();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('collection_id')->nullable()->constrained()->onDelete('cascade');;
             $table->string('title');
             $table->text('url');
             $table->timestamps();
