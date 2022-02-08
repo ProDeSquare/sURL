@@ -10,9 +10,9 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <Paginator :paginator="saves" />
 
-                <div class="grid justify-items-end mt-4 mb-2">
+                <div class="grid justify-items-end mt-4 mb-2 px-4 lg:px-0">
                     <div>
-                        <jet-dropdown align="right" width="60">
+                        <jet-dropdown align="right">
                             <template #trigger>
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
@@ -30,6 +30,8 @@
                                     All
                                 </jet-dropdown-link>
 
+                                <div class="border-t border-gray-100"></div>
+
                                 <jet-dropdown-link
                                     v-for="collection in collections"
                                     :key="collection.id"
@@ -42,7 +44,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-wrap -mx-2">
+                <div class="flex flex-wrap px-2 lg:-mx-4">
                     <div class="w-full md:w-4/12 lg:w-3/12 px-2" v-for="save in saves.data" :key="save.id">
                         <Saved :save="save" />
                     </div>

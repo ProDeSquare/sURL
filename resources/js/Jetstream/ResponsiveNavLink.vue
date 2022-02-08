@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button :class="classes" class="w-full text-left" v-if="as == 'button'">
+        <button :class="classes" class="w-full text-left font-inter" v-if="as == 'button'">
             <slot></slot>
         </button>
 
