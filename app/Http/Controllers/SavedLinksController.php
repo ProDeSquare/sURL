@@ -12,8 +12,8 @@ class SavedLinksController extends Controller
     public function index ($collection = null)
     {
         $saves = $collection
-            ? Auth::user()->collections()->findOrFail($collection)->saves()->latest()->paginate(12)
-            : Auth::user()->saves()->latest()->paginate(12);
+            ? Auth::user()->collections()->findOrFail($collection)->saves()->orderBy('title')->paginate(12)
+            : Auth::user()->saves()->orderBy('title')->paginate(12);
 
         return Inertia::render('Saved/Index', [
             'saves' => $saves,
@@ -56,7 +56,7 @@ class SavedLinksController extends Controller
         Auth::id() === $save->user_id && $save->delete();
 
         return Inertia::render('Saved/Index', [
-            'saves' => Auth::user()->saves()->orderBy('created_at', 'desc')->paginate(12),
+            'saves' => Auth::user()->saves()->orderBy('title')->paginate(12),
             'collections' => Auth::user()->collections()->orderBy('name')->get(),
         ]);
     }
