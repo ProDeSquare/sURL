@@ -57,6 +57,7 @@ class SavedLinksController extends Controller
 
         return Inertia::render('Saved/Index', [
             'saves' => Auth::user()->saves()->orderBy('created_at', 'desc')->paginate(12),
+            'collections' => Auth::user()->collections()->orderBy('name')->get(),
         ]);
     }
 }
