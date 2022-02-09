@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth:sanctum, verified']], function () {
     Route::group(['prefix' => 'collections'], function () {
         Route::get('/', [CollectionsController::class, 'view'])->name('create-collection-page');
         Route::post('/', [CollectionsController::class, 'create'])->name('collection-save');
+        Route::delete('/{collection}', [CollectionsController::class, 'delete'])->name('collection-delete');
     });
 
 });

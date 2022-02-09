@@ -42,12 +42,17 @@
                     </template>
 
                     <template #content>
+                        <p class="text-gray-800 mb-3">
+                            Deleting any collection would delete all the saves and shorts stored in them.
+                        </p>
+
                         <ul>
                             <li
                                 v-for="collection in collections"
                                 :key="collection.id"
+                                class="mt-2 text-gray-800"
                             >
-                                {{ collection.name }}
+                                <Collection :collection="collection" />
                             </li>
                         </ul>
                     </template>
@@ -59,6 +64,7 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
+    import Collection from '@/Components/Collection'
     import JetActionMessage from '@/Jetstream/ActionMessage'
     import JetButton from '@/Jetstream/Button'
     import JetFormSection from '@/Jetstream/FormSection'
@@ -71,6 +77,7 @@
     export default {
         components: {
             AppLayout,
+            Collection,
             JetFormSection,
             JetButton,
             JetInput,
