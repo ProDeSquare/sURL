@@ -16623,11 +16623,6 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     collection: Object
   },
-  data: function data() {
-    return {
-      form: this.$inertia.form()
-    };
-  },
   components: {
     Trash: _Components_Icons_Trash__WEBPACK_IMPORTED_MODULE_0__.default
   },
@@ -16636,8 +16631,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$inertia["delete"](route('collection-delete', {
         collection: this.collection.id
       }), {
-        onSuccess: function onSuccess() {
-          window.location.href = route('create-collection-page');
+        onSuccess: function onSuccess() {// 
         }
       });
     }
@@ -19351,18 +19345,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Trash = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Trash");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-    "class": ["focus:outline-none", {
-      'opacity-25': $data.form.processing
-    }],
+    "class": "focus:outline-none",
     onClick: _cache[1] || (_cache[1] = function () {
       return $options.deleteCollection && $options.deleteCollection.apply($options, arguments);
-    }),
-    disabled: $data.form.processing
+    })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Trash, {
     "class": "w-3 text-red-600 hover:text-red-500"
-  })], 10
-  /* CLASS, PROPS */
-  , ["disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.collection.name), 1
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.collection.name), 1
   /* TEXT */
   )]);
 }

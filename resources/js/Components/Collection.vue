@@ -1,6 +1,6 @@
 <template>
     <div class="flex">
-        <button class="focus:outline-none" @click="deleteCollection" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+        <button class="focus:outline-none" @click="deleteCollection">
             <Trash class="w-3 text-red-600 hover:text-red-500" />
         </button>
 
@@ -15,11 +15,6 @@
         props: {
             collection: Object
         },
-        data() {
-            return {
-                form: this.$inertia.form(),
-            }
-        },
         components: {
             Trash,
         },
@@ -27,7 +22,7 @@
             deleteCollection () {
                 this.$inertia.delete(route('collection-delete', {collection: this.collection.id}), {
                     onSuccess: () => {
-                        window.location.href = route('create-collection-page')
+                        // 
                     }
                 })
             }
