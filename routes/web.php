@@ -11,7 +11,7 @@ Route::middleware('guest')->get('/', function () {
     return Inertia::render('Welcome');
 });
 
-Route::group(['middleware' => ['auth:sanctum, verified']], function () {
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::get('/dashboard/{collection?}/{name?}', [HomeController::class, 'view'])->name('dashboard');
 
