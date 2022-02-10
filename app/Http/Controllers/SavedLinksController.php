@@ -6,6 +6,7 @@ use App\Models\Save;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class SavedLinksController extends Controller
 {
@@ -46,18 +47,13 @@ class SavedLinksController extends Controller
             ])
         ]);
 
-        return Inertia::render('Saved/CreateSave', [
-            'collections' => Auth::user()->collections()->orderBy('name')->get()
-        ]);
+        return Redirect::route('create-save');
     }
 
     public function delete (Save $save)
     {
         Auth::id() === $save->user_id && $save->delete();
 
-        return Inertia::render('Saved/Index', [
-            'saves' => Auth::user()->saves()->orderBy('title')->paginate(12),
-            'collections' => Auth::user()->collections()->orderBy('name')->get(),
-        ]);
+        return Redirect::route('saved-links-index');
     }
 }

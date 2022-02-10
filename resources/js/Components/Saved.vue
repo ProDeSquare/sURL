@@ -2,7 +2,7 @@
     <section class="bg-white shadow-sm mt-4 rounded">
         <div class="p-4 md:p-6">
             <div class="mb-4">
-                <button @click="deleteLink" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" title="Delete Link">
+                <button @click="deleteLink" title="Delete Link">
                     <Trash class="w-4 text-red-600" />
                 </button>
             </div>
@@ -36,12 +36,6 @@
             save: Object
         },
 
-        data () {
-            return {
-                form: this.$inertia.form()
-            }
-        },
-
         components: {
             Trash,
             JetButton,
@@ -61,7 +55,7 @@
             deleteLink () {
                 this.$inertia.delete(route('delete-save', {save: this.save.id}), {
                     onSuccess: () => {
-                        window.location.href = route('saved-links-index')
+                        // window.location.href = route('saved-links-index')
                     }
                 })
             }

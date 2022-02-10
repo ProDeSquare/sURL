@@ -16786,11 +16786,6 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     save: Object
   },
-  data: function data() {
-    return {
-      form: this.$inertia.form()
-    };
-  },
   components: {
     Trash: _Components_Icons_Trash__WEBPACK_IMPORTED_MODULE_1__.default,
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__.default,
@@ -16809,8 +16804,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$inertia["delete"](route('delete-save', {
         save: this.save.id
       }), {
-        onSuccess: function onSuccess() {
-          window.location.href = route('saved-links-index');
+        onSuccess: function onSuccess() {// window.location.href = route('saved-links-index')
         }
       });
     }
@@ -19767,16 +19761,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[1] || (_cache[1] = function () {
       return $options.deleteLink && $options.deleteLink.apply($options, arguments);
     }),
-    "class": {
-      'opacity-25': $data.form.processing
-    },
-    disabled: $data.form.processing,
     title: "Delete Link"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Trash, {
     "class": "w-4 text-red-600"
-  })], 10
-  /* CLASS, PROPS */
-  , ["disabled"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.save.title), 1
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.save.title), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
     "class": "text-sm text-purple-600 hover:text-purple-800",
