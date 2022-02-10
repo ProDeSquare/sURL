@@ -18932,8 +18932,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$inertia["delete"](route('delete-short', {
         "short": this["short"].hash
       }), {
-        onSuccess: function onSuccess() {
-          window.location.href = route('dashboard');
+        onSuccess: function onSuccess() {// 
         }
       });
     }

@@ -132,7 +132,7 @@
             deleteLink () {
                 this.$inertia.delete(route('delete-short', {short: this.short.hash}), {
                     onSuccess: () => {
-                        window.location.href = route('dashboard')
+                        // 
                     }
                 })
             }

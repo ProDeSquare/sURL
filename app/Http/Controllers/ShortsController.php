@@ -48,9 +48,7 @@ class ShortsController extends Controller
             ])
         ]);
 
-        return Inertia::render('Short/CreateShort', [
-            'collections' => Auth::user()->collections()->orderBy('name')->get(),
-        ]);
+        return Redirect::route('create-short');
     }
 
     public function update (Request $request, Short $short)
@@ -63,15 +61,13 @@ class ShortsController extends Controller
             'enabled' => 'nullable|boolean'
         ]));
 
-        return Inertia::render('Short/UpdateShort', [
-            'short' => Short::where('hash', $short->hash)->first()
-        ]);
+        return Redirect::route('short-options', $short->hash);
     }
 
     public function delete (Short $short)
     {
         Auth::id() === $short->user_id && $short->delete();
 
-        return Inertia::render('Short/UpdateShort');
+        return Redirect::route('dashboard');
     }
 }
