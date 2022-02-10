@@ -30,9 +30,9 @@
             </jet-form-section>
 
             <template v-if="collections.length">
-                <jet-section-border></jet-section-border>
+                <jet-section-border />
 
-                <jet-action-section>
+                <jet-action-section class="mt-10 sm:mt-0">
                     <template #title>
                         Your collections
                     </template>
