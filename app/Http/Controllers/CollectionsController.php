@@ -6,7 +6,6 @@ use Inertia\Inertia;
 use App\Models\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
 class CollectionsController extends Controller
 {
@@ -23,13 +22,13 @@ class CollectionsController extends Controller
             'name' => 'required|string',
         ]));
 
-        return Redirect::route('create-collection-page');
+        return to_route('create-collection-page');
     }
 
     public function delete (Collection $collection)
     {
         Auth::id() === $collection->user_id && $collection->delete();
 
-        return Redirect::route('create-collection-page');
+        return to_route('create-collection-page');
     }
 }

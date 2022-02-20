@@ -48,7 +48,7 @@ class ShortsController extends Controller
             ])
         ]);
 
-        return Redirect::route('create-short');
+        return to_route('create-short');
     }
 
     public function update (Request $request, Short $short)
@@ -61,13 +61,13 @@ class ShortsController extends Controller
             'enabled' => 'nullable|boolean'
         ]));
 
-        return Redirect::route('short-options', $short->hash);
+        return to_route('short-options', $short->hash);
     }
 
     public function delete (Short $short)
     {
         Auth::id() === $short->user_id && $short->delete();
 
-        return Redirect::route('dashboard');
+        return to_route('dashboard');
     }
 }
