@@ -15,30 +15,30 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::get('/dashboard/{collection?}/{name?}', [HomeController::class, 'view'])->name('dashboard');
 
-    Route::group(['prefix' => 'short/link'], function () {
+    Route::group(['prefix' => 'short/link', 'controller' => ShortsController::class], function () {
 
-        Route::get('/create', [ShortsController::class, 'view'])->name('create-short');
-        Route::post('/create', [ShortsController::class, 'create'])->name('store-short');
-        Route::get('/update/{short}', [ShortsController::class, 'edit'])->name('short-options');
-        Route::put('/update/{short}', [ShortsController::class, 'update'])->name('update-short');
-        Route::delete('/delete/{short}', [ShortsController::class, 'delete'])->name('delete-short');
-
-    });
-
-    Route::group(['prefix' => 'saved/links'], function () {
-
-        Route::get('/create', [SavedLinksController::class, 'view'])->name('create-save');
-        Route::post('/create', [SavedLinksController::class, 'save'])->name('store-save');
-        Route::delete('/delete/{save}', [SavedLinksController::class, 'delete'])->name('delete-save');
-
-        Route::get('/{collection?}/{name?}', [SavedLinksController::class, 'index'])->name('saved-links-index');
+        Route::get('/create', 'view')->name('create-short');
+        Route::post('/create', 'create')->name('store-short');
+        Route::get('/update/{short}', 'edit')->name('short-options');
+        Route::put('/update/{short}', 'update')->name('update-short');
+        Route::delete('/delete/{short}', 'delete')->name('delete-short');
 
     });
 
-    Route::group(['prefix' => 'collections'], function () {
-        Route::get('/', [CollectionsController::class, 'view'])->name('create-collection-page');
-        Route::post('/', [CollectionsController::class, 'create'])->name('collection-save');
-        Route::delete('/{collection}', [CollectionsController::class, 'delete'])->name('collection-delete');
+    Route::group(['prefix' => 'saved/links', 'controller' => SavedLinksController::class], function () {
+
+        Route::get('/create', 'view')->name('create-save');
+        Route::post('/create', 'save')->name('store-save');
+        Route::delete('/delete/{save}', 'delete')->name('delete-save');
+
+        Route::get('/{collection?}/{name?}', 'index')->name('saved-links-index');
+
+    });
+
+    Route::group(['prefix' => 'collections', 'controller' => CollectionsController::class], function () {
+        Route::get('/', 'view')->name('create-collection-page');
+        Route::post('/', 'create')->name('collection-save');
+        Route::delete('/{collection}', 'delete')->name('collection-delete');
     });
 
 });
