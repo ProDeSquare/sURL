@@ -47,13 +47,13 @@ class SavedLinksController extends Controller
             ])
         ]);
 
-        return Redirect::route('create-save');
+        return to_route('create-save');
     }
 
     public function delete (Save $save)
     {
         Auth::id() === $save->user_id && $save->delete();
 
-        return Redirect::route('saved-links-index');
+        return to_route('saved-links-index');
     }
 }
