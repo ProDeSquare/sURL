@@ -6,7 +6,6 @@ use Inertia\Inertia;
 use App\Models\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
 class CollectionsController extends Controller
 {

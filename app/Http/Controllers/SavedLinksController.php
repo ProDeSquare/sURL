@@ -6,7 +6,6 @@ use App\Models\Save;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
 class SavedLinksController extends Controller
 {
