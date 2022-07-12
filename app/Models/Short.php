@@ -21,4 +21,9 @@ class Short extends Model
     {
         return 'hash';
     }
+
+    public function clicks()
+    {
+        return $this->hasMany(Click::class, 'short_id');
+    }
 }
