@@ -16,6 +16,9 @@
                     rel="noopener noreferrer"
                 >{{ short.url }}</a>
             </div>
+
+            <small class="text-gray-600">Clicked: {{ short.clicks.length }} time(s)</small>
+
             <div class="mt-3 text-center">
                 <jet-button class="" @click.native="CopyToClipboard">
                     <Clipboard class="w-4 mr-2" />

@@ -12,7 +12,7 @@ class ShortsController extends Controller
 {
     public function redirect (Short $short)
     {
-        $short->enabled || abort(404);
+        $short->enabled && $short->clicks()->create() || abort(404);
 
         return Redirect::to($short->url);
     }
