@@ -38,7 +38,7 @@ class SavedLinksController extends Controller
     public function save (Request $request)
     {
         $request->filled('collection') && 
-        $collection = Auth::user()->collections()->findOrFail($request->collection);
+            $collection = $this->getCollection($request->collection);
 
         Auth::user()->saves()->create([
             'collection_id' => $collection->id ?? null,
@@ -62,7 +62,12 @@ class SavedLinksController extends Controller
     protected function setBase ($collection)
     {
         $this->base = $collection
-            ? Auth::user()->collections()->findOrFail($collection)
+            ? $this->getCollection($collection)
             : Auth::user();
+    }
+
+    protected function getCollection ($collection)
+    {
+        return Auth::user()->collections()->findOrFail($collection);
     }
 }
