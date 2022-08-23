@@ -7,11 +7,16 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    // "base" would help to eliminate duplication
+    // "sort" can later be used to fetch newest links
+    private $base,
+            $sort = 'title';
+
     public function view ($collection = null)
     {
-        $shorts = $collection
-            ? Auth::user()->collections()->findOrFail($collection)->shorts()->with('clicks')->orderBy('title')->paginate(12)
-            : Auth::user()->shorts()->with('clicks')->orderBy('title')->paginate(12);
+        $this->setBase($collection);
+
+        $shorts = $this->base->shorts()->with('clicks')->orderBy($this->sort)->paginate(12);
 
         return Inertia::render('Dashboard', [
             'shorts' => $shorts,
@@ -21,5 +26,12 @@ class HomeController extends Controller
                             ->orderBy('name')
                             ->get(),
         ]);
+    }
+
+    protected function setBase ($collection)
+    {
+        $this->base = $collection
+            ? Auth::user()->collections()->findOrFail($collection)
+            : Auth::user();
     }
 }
