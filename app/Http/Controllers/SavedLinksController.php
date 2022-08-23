@@ -9,11 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class SavedLinksController extends Controller
 {
+    private $base,
+            $sort = 'title';
+
     public function index ($collection = null)
     {
-        $saves = $collection
-            ? Auth::user()->collections()->findOrFail($collection)->saves()->orderBy('title')->paginate(12)
-            : Auth::user()->saves()->orderBy('title')->paginate(12);
+        $this->setBase($collection);
+
+        $saves = $this->base->saves()->orderBy($this->sort)->paginate(12);
 
         return Inertia::render('Saved/Index', [
             'saves' => $saves,
@@ -54,5 +57,12 @@ class SavedLinksController extends Controller
         Auth::id() === $save->user_id && $save->delete();
 
         return to_route('saved-links-index');
+    }
+
+    protected function setBase ($collection)
+    {
+        $this->base = $collection
+            ? Auth::user()->collections()->findOrFail($collection)
+            : Auth::user();
     }
 }
