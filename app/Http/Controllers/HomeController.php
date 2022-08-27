@@ -3,23 +3,15 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    // "base" would help to eliminate duplication
-    // "sort" can later be used to fetch newest links
-    private $base,
-            $sort = 'title';
-
-    public function view ($collection = null)
+    public function view (Request $request, $collection = null)
     {
-        $this->setBase($collection);
-
-        $shorts = $this->base->shorts()->with('clicks')->orderBy($this->sort)->paginate(12);
-
         return Inertia::render('Dashboard', [
-            'shorts' => $shorts,
+            'shorts' => $this->getShorts($collection, $request->sort),
 
             'collections' => Auth::user()
                             ->collections()
@@ -28,10 +20,24 @@ class HomeController extends Controller
         ]);
     }
 
-    protected function setBase ($collection)
+    protected function getShorts ($collection, $sort)
     {
-        $this->base = $collection
+        return $this->getSorted($this->getBase($collection), $sort)->paginate(12);
+    }
+
+    protected function getBase ($collection)
+    {
+        $base = $collection
             ? Auth::user()->collections()->findOrFail($collection)
             : Auth::user();
+        
+        return $base->shorts()->with('clicks');
+    }
+
+    protected function getSorted ($base, $sort)
+    {
+        return $sort === 'newest'
+            ? $base->latest()
+            : $base->orderBy('title');
     }
 }
