@@ -32,7 +32,7 @@
 
                                 <div class="border-t border-gray-100"></div>
 
-                                <jet-dropdown-link :href="route('dashboard', {sort: 'newest'})">
+                                <jet-dropdown-link href="?sort=newest">
                                     Newest
                                 </jet-dropdown-link>
                             </template>
