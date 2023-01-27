@@ -17,7 +17,7 @@ class ShortsController extends Controller
         return Redirect::to($short->url);
     }
 
-    public function view ()
+    public function create ()
     {
         return Inertia::render('Short/CreateShort', [
             'collections' => Auth::user()->collections()->orderBy('name')->get(),
@@ -31,7 +31,7 @@ class ShortsController extends Controller
         ]);
     }
 
-    public function create (Request $request)
+    public function store (Request $request)
     {
         $request->filled('hash') || $request['hash'] = bin2hex(random_bytes(5));
 
@@ -49,6 +49,17 @@ class ShortsController extends Controller
         ]);
 
         return to_route('create-short');
+    }
+
+    public function view (Short $short)
+    {
+        $short->user_id !== Auth::id() && abort(404);
+
+        return Inertia::render('Short/ViewShort', [
+            'short' => $short,
+            'collection' => $short->collection()->first(),
+            'clicks' => $short->clicks()->latest()->paginate(25),
+        ]);
     }
 
     public function update (Request $request, Short $short)

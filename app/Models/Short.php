@@ -22,6 +22,11 @@ class Short extends Model
         return 'hash';
     }
 
+    public function collection()
+    {
+        return $this->belongsTo(Collection::class, 'collection_id');
+    }
+
     public function clicks()
     {
         return $this->hasMany(Click::class, 'short_id');
