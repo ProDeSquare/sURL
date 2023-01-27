@@ -53,7 +53,13 @@ class ShortsController extends Controller
 
     public function view (Short $short)
     {
-        dd($short);
+        $short->user_id !== Auth::id() && abort(404);
+
+        return Inertia::render('Short/ViewShort', [
+            'short' => $short,
+            'collection' => $short->collection()->first(),
+            'clicks' => $short->clicks()->latest()->paginate(25),
+        ]);
     }
 
     public function update (Request $request, Short $short)
