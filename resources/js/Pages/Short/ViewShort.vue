@@ -7,7 +7,7 @@
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <div class="text-gray-700">
                     <div class="truncate">
                         <span class="font-semibold">URL: </span>
@@ -47,12 +47,12 @@
 
                 <jet-section-border></jet-section-border>
 
-                <div class="text-gray-600" v-if="clicks.data.length">
+                <div class="text-gray-600 mt-6 lg:mt-0" v-if="clicks.data.length">
                     <p class="mb-2 text-lg font-semibold text-gray-700">Clicked {{ clicks.total }} time(s):</p>
 
                     <Paginator :paginator="clicks" />
 
-                    <ul class="list-disc ml-6">
+                    <ul class="list-disc ml-6 mt-4 lg:mt-0">
                         <li v-for="click in clicks.data" :key="click.id">
                             {{ click.created_at }}
                         </li>

@@ -7,7 +7,9 @@
                 </inertia-link>
             </div>
 
-            <h3 class="text-gray-800 truncate">{{ short.title }}</h3>
+            <h3 class="text-gray-800 truncate">
+                <inertia-link :href="route('short-view', short)" class="hover:underline">{{ short.title }}</inertia-link>
+            </h3>
             <div class="truncate">
                 <a
                     class="text-sm text-purple-600 hover:text-purple-800"
