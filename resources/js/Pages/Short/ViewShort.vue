@@ -18,6 +18,7 @@
                             rel="noopener noreferrer"
                         >{{ short.url }}</a>
                     </div>
+
                     <div class="truncate">
                         <span class="font-semibold">sURL: </span>
                         <a
@@ -27,6 +28,7 @@
                             rel="noopener noreferrer"
                         >{{ route('short-redirect', short) }}</a>
                     </div>
+
                     <div class="text-gray-600 lg:flex">
                         <div>
                             <span class="font-semibold text-gray-700">Created: </span>
@@ -38,6 +40,17 @@
                             {{ formatDate(short.updated_at) }}
                         </div>
                     </div>
+
+                    <div class="text-gray-600" v-if="collection">
+                        <span class="font-semibold text-gray-700">Collection: </span>
+                        <inertia-link
+                            :href="route('dashboard', { collection: collection.id, name: collection.name })"
+                            class="text-purple-600 hover:text-purple-800"
+                        >
+                            {{ collection.name }}
+                        </inertia-link>
+                    </div>
+
                     <div class="text-gray-600">
                         <span class="font-semibold text-gray-700">Active: </span>
                         {{ short.enabled ? "Yes" : "No" }}
