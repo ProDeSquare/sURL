@@ -27,8 +27,14 @@
 
                 <jet-section-border></jet-section-border>
 
-                <div>
-                    {{ clicks }}
+                <div class="text-gray-700">
+                    <p class="mb-2 text-lg">Clicked {{ clicks.total }} time(s):</p>
+
+                    <ul>
+                        <li v-for="click in clicks.data" :key="click.id">
+                            @{{ click.created_at }}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
