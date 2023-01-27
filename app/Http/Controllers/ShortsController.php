@@ -51,6 +51,11 @@ class ShortsController extends Controller
         return to_route('create-short');
     }
 
+    public function view (Short $short)
+    {
+        dd($short);
+    }
+
     public function update (Request $request, Short $short)
     {
         if (Auth::id() !== $short->user_id) abort(403);
