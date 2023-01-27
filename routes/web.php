@@ -17,8 +17,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::group(['prefix' => 'short/link', 'controller' => ShortsController::class], function () {
 
-        Route::get('/create', 'view')->name('create-short');
-        Route::post('/create', 'create')->name('store-short');
+        Route::get('/create', 'create')->name('create-short');
+        Route::post('/create', 'store')->name('store-short');
         Route::get('/update/{short}', 'edit')->name('short-options');
         Route::put('/update/{short}', 'update')->name('update-short');
         Route::delete('/delete/{short}', 'delete')->name('delete-short');
