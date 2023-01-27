@@ -27,14 +27,20 @@
 
                 <jet-section-border></jet-section-border>
 
-                <div class="text-gray-700">
-                    <p class="mb-2 text-lg">Clicked {{ clicks.total }} time(s):</p>
+                <div class="text-gray-600" v-if="clicks.data.length">
+                    <p class="mb-2 text-lg font-semibold text-gray-700">Clicked {{ clicks.total }} time(s):</p>
 
-                    <ul>
+                    <Paginator :paginator="clicks" />
+
+                    <ul class="list-disc ml-6">
                         <li v-for="click in clicks.data" :key="click.id">
-                            @{{ click.created_at }}
+                            {{ click.created_at }}
                         </li>
                     </ul>
+                </div>
+
+                <div v-else>
+                    <span class="text-gray-600">"{{ short.title }}" has no click history...</span>
                 </div>
             </div>
         </div>
@@ -43,6 +49,7 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
+    import Paginator from '@/Components/Paginator'
     import JetSectionBorder from '@/Jetstream/SectionBorder'
 
     export default {
@@ -53,6 +60,7 @@
         },
         components: {
             AppLayout,
+            Paginator,
             JetSectionBorder,
         }
     }
