@@ -11,11 +11,21 @@
                 <div class="text-gray-700">
                     <div class="truncate">
                         <span class="font-semibold">URL: </span>
-                        <a class="text-purple-600 hover:text-purple-800" :href="short.url">{{ short.url }}</a>
+                        <a
+                            class="text-purple-600 hover:text-purple-800"
+                            :href="short.url"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >{{ short.url }}</a>
                     </div>
                     <div class="truncate">
                         <span class="font-semibold">sURL: </span>
-                        <a class="text-purple-600 hover:text-purple-800" :href="route('short-redirect', short)">{{ route('short-redirect', short) }}</a>
+                        <a
+                            class="text-purple-600 hover:text-purple-800"
+                            :href="route('short-redirect', short)"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >{{ route('short-redirect', short) }}</a>
                     </div>
                     <div class="text-gray-600">
                         <span class="font-semibold text-gray-700">Created: </span>

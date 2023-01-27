@@ -28120,12 +28120,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
         "class": "text-purple-600 hover:text-purple-800",
-        href: $props["short"].url
+        href: $props["short"].url,
+        target: "_blank",
+        rel: "noopener noreferrer"
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props["short"].url), 9
       /* TEXT, PROPS */
       , _hoisted_7)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
         "class": "text-purple-600 hover:text-purple-800",
-        href: _ctx.route('short-redirect', $props["short"])
+        href: _ctx.route('short-redirect', $props["short"]),
+        target: "_blank",
+        rel: "noopener noreferrer"
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.route('short-redirect', $props["short"])), 9
       /* TEXT, PROPS */
       , _hoisted_10)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props["short"].created_at) + " - ", 1
