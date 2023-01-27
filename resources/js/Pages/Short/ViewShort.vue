@@ -33,6 +33,16 @@
                         <span class="font-semibold text-gray-700">Last Updated: </span>
                         {{ short.updated_at }}
                     </div>
+                    <div class="text-gray-600">
+                        <span class="font-semibold text-gray-700">Active: </span>
+                        {{ short.enabled ? "Yes" : "No" }}
+                    </div>
+
+                    <div class="mt-6">
+                        <inertia-link :href="route('short-options', { short: short.hash })" title="Edit Link">
+                            <jet-button>Edit Link</jet-button>
+                        </inertia-link>
+                    </div>
                 </div>
 
                 <jet-section-border></jet-section-border>
@@ -58,6 +68,7 @@
 </template>
 
 <script>
+    import JetButton from '@/Jetstream/Button'
     import AppLayout from '@/Layouts/AppLayout'
     import Paginator from '@/Components/Paginator'
     import JetSectionBorder from '@/Jetstream/SectionBorder'
@@ -72,6 +83,7 @@
             AppLayout,
             Paginator,
             JetSectionBorder,
+            JetButton,
         }
     }
 </script>
