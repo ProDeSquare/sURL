@@ -6,7 +6,7 @@
             </h2>
         </template>
 
-        <div class="py-6 lg:py-12">
+        <div class="py-6 lg:py-8">
             <div class="max-w-7xl mx-auto px-4 lg:px-8">
                 <div class="text-gray-700">
                     <div class="truncate">

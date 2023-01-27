@@ -28065,7 +28065,7 @@ var _hoisted_1 = {
   "class": "font-semibold text-3xl text-gray-800 leading-tight tracking-wide truncate"
 };
 var _hoisted_2 = {
-  "class": "py-6 lg:py-12"
+  "class": "py-6 lg:py-8"
 };
 var _hoisted_3 = {
   "class": "max-w-7xl mx-auto px-4 lg:px-8"
