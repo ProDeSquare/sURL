@@ -6,8 +6,8 @@
             </h2>
         </template>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="py-6 lg:py-12">
+            <div class="max-w-7xl mx-auto px-4 lg:px-8">
                 <div class="text-gray-700">
                     <div class="truncate">
                         <span class="font-semibold">URL: </span>
@@ -27,11 +27,16 @@
                             rel="noopener noreferrer"
                         >{{ route('short-redirect', short) }}</a>
                     </div>
-                    <div class="text-gray-600">
-                        <span class="font-semibold text-gray-700">Created: </span>
-                        {{ short.created_at }} -
-                        <span class="font-semibold text-gray-700">Last Updated: </span>
-                        {{ short.updated_at }}
+                    <div class="text-gray-600 lg:flex">
+                        <div>
+                            <span class="font-semibold text-gray-700">Created: </span>
+                            {{ formatDate(short.created_at) }}
+                        </div>
+                        <div class="mx-1 hidden lg:block">-</div>
+                        <div>
+                            <span class="font-semibold text-gray-700">Last Updated: </span>
+                            {{ formatDate(short.updated_at) }}
+                        </div>
                     </div>
                     <div class="text-gray-600">
                         <span class="font-semibold text-gray-700">Active: </span>
@@ -54,7 +59,7 @@
 
                     <ul class="list-disc ml-6 mt-4 lg:mt-0">
                         <li v-for="click in clicks.data" :key="click.id">
-                            {{ click.created_at }}
+                            {{ formatDate(click.created_at) }}
                         </li>
                     </ul>
                 </div>
@@ -72,6 +77,7 @@
     import AppLayout from '@/Layouts/AppLayout'
     import Paginator from '@/Components/Paginator'
     import JetSectionBorder from '@/Jetstream/SectionBorder'
+    import moment from 'moment'
 
     export default {
         props: {
@@ -84,6 +90,9 @@
             Paginator,
             JetSectionBorder,
             JetButton,
+        },
+        methods: {
+            formatDate: date => moment(date).format("LLL")
         }
     }
 </script>
