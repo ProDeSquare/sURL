@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
         Route::get('/create', 'create')->name('create-short');
         Route::post('/create', 'store')->name('store-short');
+        Route::get('/view/{short}', 'view')->name('short-view');
         Route::get('/update/{short}', 'edit')->name('short-options');
         Route::put('/update/{short}', 'update')->name('update-short');
         Route::delete('/delete/{short}', 'delete')->name('delete-short');
