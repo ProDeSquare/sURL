@@ -9,9 +9,9 @@
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="flex-shrink-0 flex items-center">
+                            <div class="flex-shrink-0 text-gray-800 flex items-center">
                                 <inertia-link :href="route('dashboard')">
-                                    <jet-application-mark class="block h-9 w-auto" />
+                                    <Logo :classes="'h-9'" />
                                 </inertia-link>
                             </div>
 
@@ -262,21 +262,21 @@
 </template>
 
 <script>
-    import JetApplicationMark from '@/Jetstream/ApplicationMark'
     import JetBanner from '@/Jetstream/Banner'
     import JetDropdown from '@/Jetstream/Dropdown'
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import Logo from "@/Components/Icons/Logo"
 
     export default {
         components: {
-            JetApplicationMark,
             JetBanner,
             JetDropdown,
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            Logo,
         },
 
         data() {
