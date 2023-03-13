@@ -14,6 +14,9 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+
         <!-- Scripts -->
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
