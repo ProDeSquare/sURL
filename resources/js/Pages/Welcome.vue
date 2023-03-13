@@ -3,8 +3,8 @@
         <div class="max-w-6xl flex-1 mx-auto sm:px-6 lg:px-8">
             <div class="p-6 bg-white overflow-hidden shadow sm:rounded-lg">
                 <div class="flex">
-                    <div class="bg-purple-600 p-2">
-                        <JetApplicationLogo />
+                    <div class="py-2 text-gray-800">
+                        <Logo :classes="'w-10'" />
                     </div>
 
                     <div class="border-l flex-1 flex p-3 ml-3 content-center flex-wrap">
@@ -40,10 +40,12 @@
 
 <script>
     import JetApplicationLogo from '@/Jetstream/ApplicationLogo'
+    import Logo from "@/Components/Icons/Logo"
 
     export default {
         components: {
             JetApplicationLogo,
+            Logo,
         },
     }
 </script>
