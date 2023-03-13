@@ -39,12 +39,10 @@
 </template>
 
 <script>
-    import JetApplicationLogo from '@/Jetstream/ApplicationLogo'
     import Logo from "@/Components/Icons/Logo"
 
     export default {
         components: {
-            JetApplicationLogo,
             Logo,
         },
     }
