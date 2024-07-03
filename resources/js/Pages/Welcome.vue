@@ -18,19 +18,13 @@
                     </p>
 
                     <div class="pt-3 sm:block">
-                        <inertia-link v-if="$page.props.user" href="/dashboard" class="text-sm text-purple-600 underline">
-                            Visit Dashboard
-                        </inertia-link>
+                        <Link :href="route('login')" class="text-purple-600 text-sm">
+                            Log in
+                        </Link>
 
-                        <template v-else>
-                            <inertia-link :href="route('login')" class="text-purple-600 text-sm">
-                                Log in
-                            </inertia-link>
-
-                            <inertia-link :href="route('register')" class="text-purple-600 ml-4 text-sm">
-                                Register
-                            </inertia-link>
-                        </template>
+                        <Link :href="route('register')" class="text-purple-600 ml-4 text-sm">
+                            Register
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -40,10 +34,12 @@
 
 <script>
     import Logo from "@/Components/Icons/Logo"
+    import { Link } from "@inertiajs/vue3";
 
     export default {
         components: {
             Logo,
+            Link,
         },
     }
 </script>

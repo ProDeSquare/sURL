@@ -2,13 +2,13 @@
     <section class="bg-white shadow-sm mt-4 rounded">
         <div class="p-4 md:p-6">
             <div class="mb-4">
-                <inertia-link :href="route('short-options', { short: short.hash })" title="Edit Link">
+                <Link :href="route('short-options', { short: short.hash })" title="Edit Link">
                     <Globe :classes="{ 'w-5 text-gray-500': 1, 'text-purple-600': short.enabled }" />
-                </inertia-link>
+                </Link>
             </div>
 
             <h3 class="text-gray-800 truncate">
-                <inertia-link :href="route('short-view', short)" class="hover:underline">{{ short.title }}</inertia-link>
+                <Link :href="route('short-view', short)" class="hover:underline">{{ short.title }}</Link>
             </h3>
             <div class="truncate">
                 <a
@@ -36,6 +36,7 @@
     import JetButton from '@/Jetstream/Button'
     import Globe from '@/Components/Icons/Globe'
     import Clipboard from '@/Components/Icons/Clipboard'
+    import { Link } from "@inertiajs/vue3"
 
     export default {
         props: {
@@ -45,6 +46,7 @@
             Clipboard,
             JetButton,
             Globe,
+            Link,
         },
         methods: {
             CopyToClipboard () {

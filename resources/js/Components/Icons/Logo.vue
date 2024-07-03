@@ -4,6 +4,6 @@
 
 <script>
 export default {
-    props: { classes: Object },
+    props: { classes: String },
 }
 </script>
