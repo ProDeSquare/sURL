@@ -43,12 +43,12 @@
 
                     <div class="text-gray-600" v-if="collection">
                         <span class="font-semibold text-gray-700">Collection: </span>
-                        <inertia-link
+                        <Link
                             :href="route('dashboard', { collection: collection.id, name: collection.name })"
                             class="text-purple-600 hover:text-purple-800"
                         >
                             {{ collection.name }}
-                        </inertia-link>
+                        </Link>
                     </div>
 
                     <div class="text-gray-600">
@@ -57,9 +57,9 @@
                     </div>
 
                     <div class="mt-6">
-                        <inertia-link :href="route('short-options', { short: short.hash })" title="Edit Link">
+                        <Link :href="route('short-options', { short: short.hash })" title="Edit Link">
                             <jet-button>Edit Link</jet-button>
-                        </inertia-link>
+                        </Link>
                     </div>
                 </div>
 
@@ -90,6 +90,7 @@
     import AppLayout from '@/Layouts/AppLayout'
     import Paginator from '@/Components/Paginator'
     import JetSectionBorder from '@/Jetstream/SectionBorder'
+    import { Link } from '@inertiajs/vue3'
     import moment from 'moment'
 
     export default {
@@ -103,6 +104,7 @@
             Paginator,
             JetSectionBorder,
             JetButton,
+            Link,
         },
         methods: {
             formatDate: date => moment(date).format("LLL")
