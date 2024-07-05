@@ -20,13 +20,12 @@ $ cp .env.example .env
 ```shell
 $ composer install # install composer dependencies
 $ php artisan key:generate # generate application key
-$ php artisan migrate # migrate database tables
 $ php artisan storage:link # link storage to public directory
 $ pnpm install # install node dependencies
 ```
 
 In `.env` file, fill in the database and mail configuration details
-```toml
+```env
 # database details
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -37,7 +36,7 @@ DB_PASSWORD=1234
 ```
 
 sURL requires email verification for registration and password reset processes, this is also a required step that'll help with registration and password resets.
-```toml
+```env
 # mail config
 MAIL_MAILER=smtp
 MAIL_HOST=mailhog
@@ -47,6 +46,11 @@ MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=null
 MAIL_FROM_NAME="${APP_NAME}"
+```
+
+After filling in the database details, run database migrations
+```shell
+$ php artisan migrate # migrate database tables
 ```
 
 #### Serve the app with
@@ -73,7 +77,7 @@ $ composer dump-autoload # optimize composer
 - Arch GNU/Linux
 
 ### License
-**sURL** is licensed under **GNU General Public License v3.0**, check [LICENSE](./LICENSE) file for more info. 
+**sURL** is licensed under **GNU General Public License v3.0**, check [LICENSE](./LICENSE) file for more info.
 
 ### Donate
 - Bitcoin: `18Hd1waYh5uG6nWRboXGD3Q3vaPzWRMgQH`
