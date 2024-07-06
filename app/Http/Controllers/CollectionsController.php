@@ -12,7 +12,12 @@ class CollectionsController extends Controller
     public function view ()
     {
         return Inertia::render('Collections/Index', [
-            'collections' => Auth::user()->collections()->orderBy('name')->get(),
+            'collections' => cache()->remember(
+                Collection::cacheId(),
+                60,
+                fn () =>
+                    Auth::user()->collections()->orderBy('name')->get(),
+            ),
         ]);
     }
 
@@ -22,12 +27,16 @@ class CollectionsController extends Controller
             'name' => 'required|string',
         ]));
 
+        cache()->forget(Collection::cacheId());
+
         return to_route('create-collection-page');
     }
 
     public function delete (Collection $collection)
     {
         Auth::id() === $collection->user_id && $collection->delete();
+
+        cache()->forget(Collection::cacheId());
 
         return to_route('create-collection-page');
     }
