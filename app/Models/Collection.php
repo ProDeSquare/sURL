@@ -14,6 +14,13 @@ class Collection extends Model
         'name',
     ];
 
+    protected static function booted ()
+    {
+        static::created(fn () => cache()->forget(self::cacheId()));
+
+        static::deleted(fn () => cache()->forget(self::cacheId()));
+    }
+
     public function shorts ()
     {
         return $this->hasMany(Short::class, 'collection_id');

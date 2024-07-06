@@ -27,16 +27,12 @@ class CollectionsController extends Controller
             'name' => 'required|string',
         ]));
 
-        cache()->forget(Collection::cacheId());
-
         return to_route('create-collection-page');
     }
 
     public function delete (Collection $collection)
     {
         Auth::id() === $collection->user_id && $collection->delete();
-
-        cache()->forget(Collection::cacheId());
 
         return to_route('create-collection-page');
     }
