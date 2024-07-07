@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Models\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,10 +21,12 @@ class HomeController extends Controller
         return Inertia::render('Dashboard', [
             'shorts' => $shorts,
 
-            'collections' => Auth::user()
-                            ->collections()
-                            ->orderBy('name')
-                            ->get(),
+            'collections' => cache()->remember(
+                Collection::cacheId(),
+                config('cache.default-period'),
+                fn () =>
+                    Auth::user()->collections()->orderBy('name')->get()
+            ),
         ]);
     }
 
