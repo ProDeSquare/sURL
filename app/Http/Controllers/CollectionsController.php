@@ -14,7 +14,7 @@ class CollectionsController extends Controller
         return Inertia::render('Collections/Index', [
             'collections' => cache()->remember(
                 Collection::cacheId(),
-                60,
+                config('cache.default_period'),
                 fn () =>
                     Auth::user()->collections()->orderBy('name')->get(),
             ),

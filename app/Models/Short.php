@@ -36,7 +36,7 @@ class Short extends Model
     {
         return cache()->remember(
             sha1($this->id) . "-clicks",
-            60 * 60 * 24,
+            config('cache.default_period'),
             fn () => $this->clicks()->count(),
         );
     }
