@@ -10,8 +10,15 @@ class HomeController extends Controller
 {
     public function view (Request $request, $collection = null)
     {
+        $shorts = $this->getShorts($collection, $request->sort);
+
+        $shorts->getCollection()->transform(function ($short) {
+            $short->clicks = $short->getClicksCount();
+            return $short;
+        });
+
         return Inertia::render('Dashboard', [
-            'shorts' => $this->getShorts($collection, $request->sort),
+            'shorts' => $shorts,
 
             'collections' => Auth::user()
                             ->collections()
@@ -30,8 +37,8 @@ class HomeController extends Controller
         $base = $collection
             ? Auth::user()->collections()->findOrFail($collection)
             : Auth::user();
-        
-        return $base->shorts()->with('clicks');
+
+        return $base->shorts();
     }
 
     protected function getSorted ($base, $sort)
