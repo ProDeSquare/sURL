@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Save;
 use Inertia\Inertia;
+use App\Models\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,17 +22,14 @@ class SavedLinksController extends Controller
         return Inertia::render('Saved/Index', [
             'saves' => $saves,
 
-            'collections' => Auth::user()
-                            ->collections()
-                            ->orderBy('name')
-                            ->get(),
+            'collections' => $this->getCachedCollections(),
         ]);
     }
 
     public function view ()
     {
         return Inertia::render('Saved/CreateSave', [
-            'collections' => Auth::user()->collections()->orderBy('name')->get()
+            'collections' => $this->getCachedCollections(),
         ]);
     }
 
@@ -69,5 +67,15 @@ class SavedLinksController extends Controller
     protected function getCollection ($collection)
     {
         return Auth::user()->collections()->findOrFail($collection);
+    }
+
+    protected function getCachedCollections ()
+    {
+        return cache()->remember(
+            Collection::cacheId(),
+            config('cache.default_period'),
+            fn () =>
+                Auth::user()->collections()->orderBy('name')->get(),
+        );
     }
 }

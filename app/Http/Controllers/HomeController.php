@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Models\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,13 +11,22 @@ class HomeController extends Controller
 {
     public function view (Request $request, $collection = null)
     {
-        return Inertia::render('Dashboard', [
-            'shorts' => $this->getShorts($collection, $request->sort),
+        $shorts = $this->getShorts($collection, $request->sort);
 
-            'collections' => Auth::user()
-                            ->collections()
-                            ->orderBy('name')
-                            ->get(),
+        $shorts->getCollection()->transform(function ($short) {
+            $short->clicks = $short->getClicksCount();
+            return $short;
+        });
+
+        return Inertia::render('Dashboard', [
+            'shorts' => $shorts,
+
+            'collections' => cache()->remember(
+                Collection::cacheId(),
+                config('cache.default-period'),
+                fn () =>
+                    Auth::user()->collections()->orderBy('name')->get()
+            ),
         ]);
     }
 
@@ -30,8 +40,8 @@ class HomeController extends Controller
         $base = $collection
             ? Auth::user()->collections()->findOrFail($collection)
             : Auth::user();
-        
-        return $base->shorts()->with('clicks');
+
+        return $base->shorts();
     }
 
     protected function getSorted ($base, $sort)

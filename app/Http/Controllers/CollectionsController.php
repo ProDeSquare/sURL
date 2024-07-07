@@ -12,7 +12,12 @@ class CollectionsController extends Controller
     public function view ()
     {
         return Inertia::render('Collections/Index', [
-            'collections' => Auth::user()->collections()->orderBy('name')->get(),
+            'collections' => cache()->remember(
+                Collection::cacheId(),
+                config('cache.default_period'),
+                fn () =>
+                    Auth::user()->collections()->orderBy('name')->get(),
+            ),
         ]);
     }
 

@@ -31,4 +31,13 @@ class Short extends Model
     {
         return $this->hasMany(Click::class, 'short_id');
     }
+
+    public function getClicksCount(): int
+    {
+        return cache()->remember(
+            sha1($this->id) . "-clicks",
+            config('cache.default_period'),
+            fn () => $this->clicks()->count(),
+        );
+    }
 }

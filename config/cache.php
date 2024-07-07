@@ -103,4 +103,15 @@ return [
 
     'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache'),
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default caching period
+    |--------------------------------------------------------------------------
+    |
+    | Instead of hardcoding time, this can be used instead.
+    |
+    */
+    'default_period' => 60 * 60 * 24 * 7,
+
 ];

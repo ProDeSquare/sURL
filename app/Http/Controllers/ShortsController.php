@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Short;
+use App\Models\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -20,7 +21,12 @@ class ShortsController extends Controller
     public function create ()
     {
         return Inertia::render('Short/CreateShort', [
-            'collections' => Auth::user()->collections()->orderBy('name')->get(),
+            'collections' => cache()->remember(
+                Collection::cacheId(),
+                config('cache.default_period'),
+                fn () =>
+                    Auth::user()->collections()->orderBy('name')->get(),
+            ),
         ]);
     }
 
