@@ -2,7 +2,7 @@
     <div>
         <jet-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100 flex flex-col">
             <nav class="bg-white border-b">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -254,9 +254,18 @@
             </header>
 
             <!-- Page Content -->
-            <main>
+            <main class="flex-grow">
                 <slot></slot>
             </main>
+
+            <!-- Footer -->
+            <footer class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <span class="text-gray-700">
+                    &copy;
+                    <Link :href="route('dashboard')" class="hover:text-purple-600">sURL</Link>
+                    2021-{{ new Date().getFullYear() }}.
+                </span>
+            </footer>
         </div>
     </div>
 </template>
