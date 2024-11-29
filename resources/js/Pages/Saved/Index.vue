@@ -44,7 +44,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5 px-4 md:px-0">
                     <div v-for="save in saves.data" :key="save.id">
                         <Saved :save="save" />
                     </div>
