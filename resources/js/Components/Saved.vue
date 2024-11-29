@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-white shadow-sm mt-4 rounded">
+    <section class="bg-white shadow-sm rounded">
         <div class="p-4 md:p-6">
             <div class="mb-4">
                 <button @click="deleteLink" title="Delete Link">

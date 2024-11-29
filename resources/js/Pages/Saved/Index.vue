@@ -44,8 +44,8 @@
                     </div>
                 </div>
 
-                <div class="flex flex-wrap px-2 lg:-mx-4">
-                    <div class="w-full md:w-4/12 lg:w-3/12 px-2" v-for="save in saves.data" :key="save.id">
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
+                    <div v-for="save in saves.data" :key="save.id">
                         <Saved :save="save" />
                     </div>
                 </div>
