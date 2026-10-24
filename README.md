@@ -69,11 +69,11 @@ $ composer dump-autoload # optimize composer
 
 ### Compatibility and Tested Environments
 **sURL** is tested and verified to work seamlessly with/on:
-- PHP v8.3.9
-- Composer v2.7.7
-- MariaDB v11.4.2
-- Node.js v22.3.0
-- PNPM v9.1.0
+- PHP v8.5.12
+- Composer v2.10.3
+- MariaDB v13.0.2
+- Node.js v22.23.4
+- PNPM v9.13.0
 - Arch GNU/Linux
 
 ### License
